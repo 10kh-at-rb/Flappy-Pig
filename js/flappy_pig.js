@@ -35,21 +35,25 @@
     }
 
     if (this.isCollide()) {
-      alert("dead");
+      this.board.gameOver = true;
     }
+
     return this.body;
   };
 
+  // checks if pig hits obstacle or hits floor
   Pig.prototype.isCollide = function () {
     var collide = false;
     this.board.obstacle.forEach(function (obstacle) {
       this.board.pig.body.forEach(function (pigPart) {
-        if (obstacle.equals(pigPart)) {
+        if (obstacle.equals(pigPart) || pigPart.i > 20) {
           collide = true;
           return;
         }
       }.bind(this))
     }.bind(this))
+
+
     return collide;
   };
 
@@ -90,6 +94,7 @@
     this.dimensions = dim;
     this.pig = new Pig(this);
     this.newObstacle();
+    this.gameOver = false;
   };
 
   Board.prototype.newObstacle = function () {

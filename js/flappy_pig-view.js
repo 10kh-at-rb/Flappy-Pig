@@ -15,9 +15,12 @@
       }
     }.bind(this));
 
-    setInterval(function () {
+    this.timer = setInterval(function () {
       this.board.pig.move();
       this.$el.html(this.render.bind(this));
+      if (this.board.gameOver) {
+        clearInterval(this.timer);
+      }
     }.bind(this), 100);
   };
 
