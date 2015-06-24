@@ -14,14 +14,28 @@
       "N": [-1, 0],
       "S": [1, 0]
     };
-  };
 
+    var updatePos = this.body.upDown(this.directions[this.dir]);
+    this.body = updatePos;
+
+    return this.body;
+  };
 
   var Coord = FlappyPig.Coord = function (i, j) {
     this.i = i;
     this.j = j;
   };
 
+  Coord.prototype.upDown = function (pair) {
+    return new Coord(this.i + pair[0], this.j + pair[1]);
+  }
+
+  // Coord.prototype.up = function () {
+  //   return new Coord(this.i - 1, this.j + 0);
+  // }
+  // Coord.prototype.gravity = function () {
+  //   return new Coord(this.i + 1, this.j + 0);
+  // }
   var Board = FlappyPig.Board = function (dim) {
     this.dimensions = dim;
     this.pig = new Pig(this);

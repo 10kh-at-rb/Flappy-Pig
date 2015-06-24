@@ -1,0 +1,7 @@
+.flappy-container {
+  border: 10px solid black;
+}
+.cell {
+  width: 20px;
+  height: 20px;
+}

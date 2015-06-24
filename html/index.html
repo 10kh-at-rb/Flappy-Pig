@@ -1,1 +1,13 @@
+<link rel="stylesheet" type="text/css" href="../css/stylesheet.css"/>
+<script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
 <script type="text/javascript" src="../js/flappy_pig.js"></script>
+<script type="text/javascript" src="../js/flappy_pig-view.js"></script>
+
+<div class="flappy-view"></div>
+
+<script type="text/javascript">
+  $(function () {
+    var game = new FlappyPig.View($('.flappy-view'));
+    console.log(game);
+  });
+</script>
