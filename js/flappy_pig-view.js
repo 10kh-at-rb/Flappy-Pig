@@ -10,7 +10,7 @@
     this.setupBoard();
 
     $(window).keydown(function (e) {
-      if (e.keyCode === 38) {
+      if (e.keyCode === 32) {
         this.board.pig.fly();
       }
     }.bind(this));

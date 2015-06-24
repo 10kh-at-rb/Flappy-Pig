@@ -40,9 +40,18 @@
   // Coord.prototype.gravity = function () {
   //   return new Coord(this.i + 1, this.j + 0);
   // }
+
+  var Obstacle = FlappyPig.Obstacle = function () {
+    // needs to take up a bit of space
+    this.random_i = Math.floor(Math.random(20)); // 5
+    this.random_j = Math.floor(Math.random(20)); // 6
+    this.body = new Coord(this.random_i, this.random_j);
+  };
+
   var Board = FlappyPig.Board = function (dim) {
     this.dimensions = dim;
     this.pig = new Pig(this);
+    this.obstacle = new Obstacle();
   };
 
   Board.blankgrid = function (dim) {
