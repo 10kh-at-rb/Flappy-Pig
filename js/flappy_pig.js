@@ -17,8 +17,12 @@
 
     var updatePos = this.body.upDown(this.directions[this.dir]);
     this.body = updatePos;
-
+    this.dir = "S";
     return this.body;
+  };
+
+  Pig.prototype.fly = function () {
+    this.dir = "N";
   };
 
   var Coord = FlappyPig.Coord = function (i, j) {

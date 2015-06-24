@@ -5,17 +5,29 @@
 
   var View = FlappyPig.View = function ($el) {
     this.$el = $el;
-    this.board = new FlappyPig.Board(20);
+    this.dim = 20;
+    this.board = new FlappyPig.Board(this.dim);
     this.setupBoard();
-    return "here"
+
+    $(window).keydown(function (e) {
+      if (e.keyCode === 38) {
+        this.board.pig.fly();
+      }
+    }.bind(this));
+
+    setInterval(function () {
+      this.board.pig.move();
+      this.$el.html(this.render.bind(this));
+    }.bind(this), 200);
   };
 
 
   View.prototype.setupBoard = function () {
+
     for(i = 0; i <= this.dim; i++) {
       var $row = $('<div class="row">');
       for(j = 0; j <= this.dim; j++) {
-        $row.append($('<div>').addClass("cell row-" + i + " col-" + j));
+        $row.append($('<div>').addClass("cell row-" + j + " col-" + i));
       }
       this.$el.append($row);
     }

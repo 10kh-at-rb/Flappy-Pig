@@ -1,7 +1,14 @@
 .flappy-container {
   border: 10px solid black;
 }
+.row {
+  float: left;
+}
 .cell {
   width: 20px;
   height: 20px;
+  border: 1px solid #eee;
+}
+.pig {
+  background: pink;
 }
