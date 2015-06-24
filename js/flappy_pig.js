@@ -4,19 +4,22 @@
   }
 
   var Pig = FlappyPig.Pig = function (board) {
-    this.body = new Coord(10, 3);
+    this.body = [new Coord(10, 3), new Coord(10, 4), new Coord(9, 3), new Coord(9, 4)];
     this.board = board;
     this.dir = "S";
   };
 
   Pig.prototype.move = function () {
     this.directions = {
-      "N": [-1, 0],
+      "N": [-2, 0],
       "S": [1, 0],
       "W": [0, -1]
     };
 
-    var updatePos = this.body.upDown(this.directions[this.dir]);
+    var updatePos = []
+    this.body.forEach(function (item) {
+      updatePos.push(item.upDown(this.directions[this.dir]));
+    }.bind(this));
     this.body = updatePos;
     this.dir = "S";
 
@@ -25,6 +28,10 @@
       var oneLeft = obstacle.moveLeft(this.directions["W"]);
       this.board.obstacle[idx] = oneLeft;
     }.bind(this));
+
+    if (this.board.obstacle[0].j < 0) {
+      this.board.newObstacle();
+    }
     return this.body;
   };
 
@@ -54,31 +61,38 @@
 
   var Obstacle = FlappyPig.Obstacle = function () {
     // needs to take up a bit of space
-    this.random_i = Math.floor(Math.random()*(14 - 6)) + 6; // 5 first num is the max, other is the min
-    console.log(this.random_i);
-    var horizontalPos = 20;
 
-    this.top = [];
-    this.bottom = [];
-
-    var top_start = this.random_i;
-    for(i = 0; i < top_start; i++) {
-      this.top.push(new Coord(i, horizontalPos));
-    }
-
-    var bottom_start = this.random_i + 5;
-    for(i = bottom_start; i <= 20; i++) {
-      this.bottom.push(new Coord(i, horizontalPos));
-    }
-
-    console.log(this.top.concat(this.bottom));
-    return this.top.concat(this.bottom);
   };
 
   var Board = FlappyPig.Board = function (dim) {
     this.dimensions = dim;
     this.pig = new Pig(this);
-    this.obstacle = new Obstacle();
+    this.newObstacle();
+  };
+
+  Board.prototype.newObstacle = function () {
+    random_i = Math.floor(Math.random()*(14 - 6)) + 6; // 5 first num is the max, other is the min
+    console.log(random_i);
+    var horizontalPos = 20;
+
+    this.top = [];
+    this.bottom = [];
+
+    var top_start = random_i;
+    for(i = 0; i < top_start; i++) {
+      this.top.push(new Coord(i, horizontalPos));
+      this.top.push(new Coord(i, horizontalPos + 1));
+    }
+
+    var bottom_start = random_i + 5;
+    for(i = bottom_start; i <= 20; i++) {
+      this.bottom.push(new Coord(i, horizontalPos));
+      this.bottom.push(new Coord(i, horizontalPos + 1));
+    }
+
+    console.log(this.top.concat(this.bottom));
+    this.obstacle = this.top.concat(this.bottom);
+    return this.obstacle;
   };
 
   Board.blankgrid = function (dim) {

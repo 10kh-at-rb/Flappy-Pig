@@ -18,7 +18,7 @@
     setInterval(function () {
       this.board.pig.move();
       this.$el.html(this.render.bind(this));
-    }.bind(this), 200);
+    }.bind(this), 100);
   };
 
 
@@ -36,7 +36,12 @@
   View.prototype.render = function () {
     this.$el.html("");
     this.setupBoard();
-    $('.row-' + this.board.pig.body.i + '.col-' + this.board.pig.body.j).addClass('pig');
+
+    this.board.pig.body.forEach(function (cell) {
+      $('.row-' + cell.i + '.col-' + cell.j).addClass('pig');
+    });
+
+    // $('.row-' + this.board.pig.body.i + '.col-' + this.board.pig.body.j).addClass('pig');
     this.board.obstacle.forEach(function (cell) {
       $('.row-' + cell.i + '.col-' + cell.j).addClass('obstacle');
     });
