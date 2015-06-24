@@ -1,6 +1,8 @@
-.flappy-container {
+.flappy-view {
   border: 10px solid black;
+  display: inline-block;
 }
+
 .row {
   float: left;
 }

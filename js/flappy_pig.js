@@ -12,12 +12,19 @@
   Pig.prototype.move = function () {
     this.directions = {
       "N": [-1, 0],
-      "S": [1, 0]
+      "S": [1, 0],
+      "W": [0, -1]
     };
 
     var updatePos = this.body.upDown(this.directions[this.dir]);
     this.body = updatePos;
     this.dir = "S";
+
+    // debugger;
+    this.board.obstacle.forEach(function (obstacle, idx) {
+      var oneLeft = obstacle.moveLeft(this.directions["W"]);
+      this.board.obstacle[idx] = oneLeft;
+    }.bind(this));
     return this.body;
   };
 
@@ -28,6 +35,10 @@
   var Coord = FlappyPig.Coord = function (i, j) {
     this.i = i;
     this.j = j;
+  };
+
+  Coord.prototype.moveLeft = function (pair) {
+    return new Coord(this.i + pair[0], this.j + pair[1]);
   };
 
   Coord.prototype.upDown = function (pair) {
@@ -45,7 +56,7 @@
     // needs to take up a bit of space
     this.random_i = Math.floor(Math.random()*(14 - 6)) + 6; // 5 first num is the max, other is the min
     console.log(this.random_i);
-    var horizontalPos = 10;
+    var horizontalPos = 20;
 
     this.top = [];
     this.bottom = [];
