@@ -7,8 +7,12 @@
 .cell {
   width: 20px;
   height: 20px;
-  border: 1px solid #eee;
+  border: 0px solid #eee;
 }
 .pig {
   background: pink;
+  border-radius: 10px;
+}
+.obstacle {
+  background: green;
 }

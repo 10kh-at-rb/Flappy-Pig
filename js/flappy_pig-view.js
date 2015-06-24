@@ -37,5 +37,9 @@
     this.$el.html("");
     this.setupBoard();
     $('.row-' + this.board.pig.body.i + '.col-' + this.board.pig.body.j).addClass('pig');
+    this.board.obstacle.forEach(function (cell) {
+      $('.row-' + cell.i + '.col-' + cell.j).addClass('obstacle');
+    });
+
   };
 })();

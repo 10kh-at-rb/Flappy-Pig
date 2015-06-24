@@ -43,23 +43,25 @@
 
   var Obstacle = FlappyPig.Obstacle = function () {
     // needs to take up a bit of space
-    this.random_i = Math.floor(Math.random()*20); // 5
-    this.random_j = Math.floor(Math.random()*20); // 6
+    this.random_i = Math.floor(Math.random()*(14 - 6)) + 6; // 5 first num is the max, other is the min
+    console.log(this.random_i);
+    var horizontalPos = 10;
 
     this.top = [];
     this.bottom = [];
 
     var top_start = this.random_i;
     for(i = 0; i < top_start; i++) {
-      this.top.push(new Coord(i, this.random_j));
+      this.top.push(new Coord(i, horizontalPos));
     }
 
     var bottom_start = this.random_i + 5;
     for(i = bottom_start; i <= 20; i++) {
-      this.bottom.push(new Coord(i, this.random_j));
+      this.bottom.push(new Coord(i, horizontalPos));
     }
 
-    return this.top;
+    console.log(this.top.concat(this.bottom));
+    return this.top.concat(this.bottom);
   };
 
   var Board = FlappyPig.Board = function (dim) {
