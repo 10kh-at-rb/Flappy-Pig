@@ -23,16 +23,34 @@
     this.body = updatePos;
     this.dir = "S";
 
-    // debugger;
+    // move obstacles to the left
     this.board.obstacle.forEach(function (obstacle, idx) {
       var oneLeft = obstacle.moveLeft(this.directions["W"]);
       this.board.obstacle[idx] = oneLeft;
     }.bind(this));
 
+    // generate new obstacle
     if (this.board.obstacle[0].j < 0) {
       this.board.newObstacle();
     }
+
+    if (this.isCollide()) {
+      alert("dead");
+    }
     return this.body;
+  };
+
+  Pig.prototype.isCollide = function () {
+    var collide = false;
+    this.board.obstacle.forEach(function (obstacle) {
+      this.board.pig.body.forEach(function (pigPart) {
+        if (obstacle.equals(pigPart)) {
+          collide = true;
+          return;
+        }
+      }.bind(this))
+    }.bind(this))
+    return collide;
   };
 
   Pig.prototype.fly = function () {
@@ -42,6 +60,10 @@
   var Coord = FlappyPig.Coord = function (i, j) {
     this.i = i;
     this.j = j;
+  };
+
+  Coord.prototype.equals = function (other) {
+    return (this.i === other.i && this.j === other.j);
   };
 
   Coord.prototype.moveLeft = function (pair) {
@@ -72,7 +94,6 @@
 
   Board.prototype.newObstacle = function () {
     random_i = Math.floor(Math.random()*(14 - 6)) + 6; // 5 first num is the max, other is the min
-    console.log(random_i);
     var horizontalPos = 20;
 
     this.top = [];
@@ -82,15 +103,18 @@
     for(i = 0; i < top_start; i++) {
       this.top.push(new Coord(i, horizontalPos));
       this.top.push(new Coord(i, horizontalPos + 1));
+      this.top.push(new Coord(i, horizontalPos + 2));
+      this.top.push(new Coord(i, horizontalPos + 3));
     }
 
     var bottom_start = random_i + 5;
     for(i = bottom_start; i <= 20; i++) {
       this.bottom.push(new Coord(i, horizontalPos));
       this.bottom.push(new Coord(i, horizontalPos + 1));
+      this.bottom.push(new Coord(i, horizontalPos + 2));
+      this.bottom.push(new Coord(i, horizontalPos + 3));
     }
 
-    console.log(this.top.concat(this.bottom));
     this.obstacle = this.top.concat(this.bottom);
     return this.obstacle;
   };
