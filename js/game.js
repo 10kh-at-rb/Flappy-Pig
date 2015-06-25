@@ -27,8 +27,6 @@
     // this.pigImage.onload = function () {
     //   this.pigReady = true;
     // };
-    this.pigImage = new Image();
-    this.pigImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/loading-gif-animate.gif";
 
 
     this.bgImage_1 = new Image();
@@ -62,12 +60,20 @@
     //
     // this.bgImage_10 = new Image();
     // this.bgImage_10.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_10.gif";
+    this.pigFlyImage = new Image();
+    this.pigFlyImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pig_fly.png";
+
+    this.pigFlyDownImage = new Image();
+    this.pigFlyDownImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pig_fly_down.png";
+
+    this.pigFallImage = new Image();
+    this.pigFallImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pig_fall.png";
 
     this.topPipeImage = new Image();
-    this.topPipeImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pipe_top.png"
+    this.topPipeImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pipe_top.png";
 
     this.bottomPipeImage = new Image();
-    this.bottomPipeImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pipe_bottom.png"
+    this.bottomPipeImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pipe_bottom.png";
 
   };
 
@@ -104,7 +110,6 @@
     ctx.drawImage(this.bgImage_bar, (this.obstacles[0].fromLeft - this.xDim), 900, 2250, 28.5);
     // }
 
-    ctx.drawImage(this.pigImage, this.pig.left, this.pig.top, this.pig.width, this.pig.height);
 
     this.obstacles.forEach(function (obstacle) {
       obstacle.render(ctx);
@@ -115,6 +120,7 @@
     ctx.drawImage(this.topPipeImage, this.obstacles[0].fromLeft, this.obstacles[0].height - this.yDim, 87*1.6, this.yDim);
     ctx.drawImage(this.bottomPipeImage, this.obstacles[1].fromLeft, this.obstacles[1].fromTop, 87*1.6, this.yDim);
     this.pig.render(ctx);
+
 
 
     ctx.font = "100px flappy";

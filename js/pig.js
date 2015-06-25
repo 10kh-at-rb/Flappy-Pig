@@ -9,25 +9,30 @@
     this.left = 350;
     this.width = 90;
     this.height = 65;
+    this.isUp = false;
     this.color = "pink";
   };
 
   Pig.prototype.move = function () {
     this.top += 2;
-
     if (this.collide() || this.isHitGround()) {
       // console.log('gameover');
       this.game.gameOver = true;
     }
+
+    // setTimeout(function () {
+      // this.isUp = false;
+    // }.bind(this), 1000);
   };
 
   Pig.prototype.up = function () {
+    this.isUp = true;
     this.top -= 80;
   }
 
   Pig.prototype.render = function (ctx) {
 
-    ctx.fillStyle = "pink";
+    ctx.fillStyle = "rgba(0, 0, 0, 0)";
     ctx.fillRect(
       this.left,
       this.top,
@@ -35,6 +40,16 @@
       this.height
     );
 
+    if (this.isUp) {
+      if (this.game.interval % 6 === 0 || this.game.interval % 7 === 0 || this.game.interval % 8 === 0 || this.game.interval % 9 === 0 || this.game.interval % 10 === 0) {
+        ctx.drawImage(this.game.pigFlyImage, this.left, this.top, this.width, this.height);
+      } else {
+        ctx.drawImage(this.game.pigFlyDownImage, this.left, this.top, this.width, this.height);
+      }
+
+    } else {
+      ctx.drawImage(this.game.pigFallImage, this.left, this.top, this.width, this.height);
+    }
 
   };
 
