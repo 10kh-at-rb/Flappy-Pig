@@ -5,24 +5,24 @@
 
   var Pig = FlappyPig.Pig = function (game) {
     this.game = game;
-    this.top = 100;
+    this.top = 400;
     this.left = 350;
-    this.width = 50;
-    this.height = 40;
+    this.width = 90;
+    this.height = 65;
     this.color = "pink";
   };
 
   Pig.prototype.move = function () {
-    this.top += 1;
+    this.top += 2;
 
     if (this.collide() || this.isHitGround()) {
-      console.log('gameover');
+      // console.log('gameover');
       this.game.gameOver = true;
     }
   };
 
   Pig.prototype.up = function () {
-    this.top -= 40;
+    this.top -= 80;
   }
 
   Pig.prototype.render = function (ctx) {
