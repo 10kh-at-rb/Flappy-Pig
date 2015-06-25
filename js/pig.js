@@ -6,7 +6,7 @@
   var Pig = FlappyPig.Pig = function (game) {
     this.game = game;
     this.top = 100;
-    this.left = 100;
+    this.left = 350;
     this.width = 50;
     this.height = 40;
     this.color = "pink";

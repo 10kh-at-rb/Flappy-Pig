@@ -117,21 +117,23 @@
     this.pig.render(ctx);
 
 
-    // ctx.fillStyle = "black";
-    ctx.font = "72px flappy";
+    ctx.font = "100px flappy";
     ctx.fillStyle = "white";
     ctx.lineWidth = 4;
     ctx.strokeStyle = "black";
-    // ctx.textAlign = "left";
-    // ctx.textBaseline = "top";
     ctx.fillText(this.score, 360, 150);
     ctx.strokeText(this.score, 360, 150);
 
-    // debugger;
-    // if (this.pigReady) {
-
-    // }
   };
+
+  Game.prototype.dead = function (ctx) {
+    ctx.font = "100px flappy";
+    ctx.fillStyle = "white";
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "black";
+    ctx.fillText("GAMEOVER", 150, 500);
+    ctx.strokeText("GAMEOVER", 150, 500);
+  }
 
   Game.prototype.movePig = function () {
     var game = this;
@@ -175,6 +177,9 @@
       this.movePig();
       this.moveObstacles();
       this.render(ctx);
+      if (this.gameOver) {
+        this.dead(ctx);
+      }
     }).bind(this), 1000/200);
   };
 })();
