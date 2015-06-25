@@ -22,7 +22,7 @@
   };
 
   Pig.prototype.up = function () {
-    this.top -= 20;
+    this.top -= 40;
   }
 
   Pig.prototype.render = function (ctx) {

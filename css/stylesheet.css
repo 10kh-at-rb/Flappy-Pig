@@ -17,7 +17,7 @@
 }
 
 .flappy-view {
-  border: 10px solid black;
+  border: 3px solid #543646;
   display: inline-block;
   width: 100%;
   position: relative;

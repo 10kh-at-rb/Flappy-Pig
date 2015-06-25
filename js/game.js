@@ -101,7 +101,7 @@
     console.log(this.interval);
     console.log(this.xDim);
     // if (this.interval % this.xDim === 0) {
-      ctx.drawImage(this.bgImage_bar, (this.obstacles[0].fromLeft - this.xDim), 0, 2250, 28.5);
+      ctx.drawImage(this.bgImage_bar, (this.obstacles[0].fromLeft - this.xDim), 900, 2250, 28.5);
     // }
 
     ctx.drawImage(this.pigImage, this.pig.left, this.pig.top, this.pig.width, this.pig.height);
