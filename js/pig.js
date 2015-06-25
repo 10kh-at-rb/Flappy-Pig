@@ -70,7 +70,7 @@
 
   Obstacle.prototype.move = function () {
     this.fromLeft -= 1;
-    if (this.fromLeft <= -this.width) {
+    if (this.fromLeft + this.width < 0) {
       this.game.obstacles = this.game.generateNewObstacles();
     }
 

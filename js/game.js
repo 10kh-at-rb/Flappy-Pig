@@ -3,16 +3,25 @@
     window.FlappyPig = {};
   }
 
-  var Game = FlappyPig.Game = function (xDim, yDim) {
-    this.xDim = xDim;
-    this.yDim = yDim;
+  var Game = FlappyPig.Game = function (canvas) {
+    this.canvas = canvas;
+    this.xDim = this.canvas.width;
+    this.yDim = this.canvas.height;
     this.obstacles = this.generateNewObstacles();
     this.pig = new FlappyPig.Pig(this);
     this.gameOver = false;
 
+    this.fired = false;
     $(window).keydown(function (e) {
-      this.pig.up();
+      if (this.fired) {
+        this.pig.up();
+      } else {
+        this.start();
+        this.fired = true;
+      }
     }.bind(this));
+
+
   };
 
   Game.prototype.render = function (ctx) {
@@ -51,8 +60,8 @@
     return [this.obstacleTop, this.obstacleBottom];
   };
 
-  Game.prototype.start = function (canvasEl) {
-    var ctx = canvasEl.getContext("2d");
+  Game.prototype.start = function () {
+    var ctx = this.canvas.getContext("2d");
 
     window.setInterval((function () {
       this.movePig();
