@@ -74,9 +74,9 @@
   Game.prototype.render = function (ctx) {
     ctx.clearRect(0, 0, this.xDim, this.yDim);
 
-    if (this.interval % 1 === 0) {
-      ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
-    }
+
+    ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
+
     // } else if (this.interval % 9 === 0) {
     //   ctx.drawImage(this.bgImage_9, 0, 0, this.xDim, this.yDim)
     // } else if (this.interval % 8 === 0) {
@@ -101,7 +101,7 @@
     // console.log(this.interval);
     // console.log(this.xDim);
     // if (this.interval % this.xDim === 0) {
-      ctx.drawImage(this.bgImage_bar, (this.obstacles[0].fromLeft - this.xDim), 900, 2250, 28.5);
+    ctx.drawImage(this.bgImage_bar, (this.obstacles[0].fromLeft - this.xDim), 900, 2250, 28.5);
     // }
 
     ctx.drawImage(this.pigImage, this.pig.left, this.pig.top, this.pig.width, this.pig.height);
@@ -127,6 +127,8 @@
   };
 
   Game.prototype.dead = function (ctx) {
+    ctx.clearRect(0, 0, this.xDim, this.yDim);
+    ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
     ctx.font = "100px flappy";
     ctx.fillStyle = "white";
     ctx.lineWidth = 4;
@@ -173,12 +175,14 @@
     var ctx = this.canvas.getContext("2d");
 
     window.setInterval((function () {
-      this.interval += 1;
-      this.movePig();
-      this.moveObstacles();
-      this.render(ctx);
       if (this.gameOver) {
+        ctx.clearRect(0, 0, this.xDim, this.yDim);
         this.dead(ctx);
+      } else {
+        this.interval += 1;
+        this.movePig();
+        this.moveObstacles();
+        this.render(ctx);
       }
     }).bind(this), 1000/200);
   };
