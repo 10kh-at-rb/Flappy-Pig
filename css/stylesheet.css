@@ -11,6 +11,37 @@
 
 }
 
+
+@font-face {
+    font-family: 'Silk';
+    src: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/Pixel/slkscr-webfont.eot');
+    src: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/Pixel/slkscr-webfont.eot?#iefix') format('embedded-opentype'),
+         url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/Pixel/slkscr-webfont.woff2') format('woff2'),
+         url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/Pixel/slkscr-webfont.woff') format('woff'),
+         url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/Pixel/slkscr-webfont.ttf') format('truetype'),
+         url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/Pixel/slkscr-webfont.svg#silkscreennormal') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Silk-Expanded';
+    src: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/Pixel/slkscre-webfont.eot');
+    src: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/Pixel/slkscre-webfont.eot?#iefix') format('embedded-opentype'),
+         url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/Pixel/slkscre-webfont.woff2') format('woff2'),
+         url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/Pixel/slkscre-webfont.woff') format('woff'),
+         url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/Pixel/slkscre-webfont.ttf') format('truetype'),
+         url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/Pixel/slkscre-webfont.svg#silkscreen_expandednormal') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 .container {
   /*background-image: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg.png');*/
   background-size: 480px;

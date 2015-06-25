@@ -14,13 +14,30 @@
     this.fired = false;
     this.interval = 0;
     $(window).keydown(function (e) {
-      if (this.fired) {
-        this.pig.up();
-      } else {
-        this.start();
-        this.fired = true;
+      if (e.keyCode === 32) {
+        if (this.fired) {
+          this.pig.up();
+          console.log('fired is true')
+        } else {
+          this.gameOver = false;
+
+          this.obstacles = this.generateNewObstacles();
+          this.pig = new FlappyPig.Pig(this);
+          this.score = 0;
+          this.gameOver = false;
+          this.fired = false;
+          this.interval = 0;
+
+
+          this.start();
+          this.fired = true;
+          console.log('start game');
+          console.log(this.fired);
+        }
       }
+
     }.bind(this));
+
 
     //
     // this.pigReady = false;
@@ -75,6 +92,9 @@
     this.bottomPipeImage = new Image();
     this.bottomPipeImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pipe_bottom.png";
 
+    this.scoreBoardImage = new Image();
+    this.scoreBoardImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/score_board.png";
+
   };
 
   Game.prototype.render = function (ctx) {
@@ -125,10 +145,11 @@
 
     ctx.font = "100px flappy";
     ctx.fillStyle = "white";
+        ctx.textAlign = 'center';
     ctx.lineWidth = 4;
     ctx.strokeStyle = "black";
-    ctx.fillText(this.score, 360, 150);
-    ctx.strokeText(this.score, 360, 150);
+    ctx.fillText(this.score, this.xDim/2, 150);
+    ctx.strokeText(this.score, this.xDim/2, 150);
 
   };
 
@@ -136,11 +157,25 @@
     ctx.clearRect(0, 0, this.xDim, this.yDim);
     ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
     ctx.font = "100px flappy";
+    ctx.textAlign = 'center';
     ctx.fillStyle = "white";
     ctx.lineWidth = 4;
     ctx.strokeStyle = "black";
-    ctx.fillText("GAMEOVER", 150, 500);
-    ctx.strokeText("GAMEOVER", 150, 500);
+    ctx.fillText("GAMEOVER", this.xDim/2, 350);
+    ctx.strokeText("GAMEOVER", this.xDim/2, 350);
+
+
+    ctx.drawImage(this.scoreBoardImage, 290, 400, 185, 165);
+
+    ctx.font = "60px flappy";
+    ctx.textAlign = 'center';
+    ctx.fillStyle = "white";
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "black";
+    ctx.fillText(this.score, this.xDim/2, 530);
+    ctx.strokeText(this.score, this.xDim/2, 530);
+
+
   }
 
   Game.prototype.movePig = function () {
@@ -180,10 +215,12 @@
   Game.prototype.start = function () {
     var ctx = this.canvas.getContext("2d");
 
-    window.setInterval((function () {
+    this.timerId = window.setInterval((function () {
       if (this.gameOver) {
-        ctx.clearRect(0, 0, this.xDim, this.yDim);
-        this.dead(ctx);
+        // ctx.clearRect(0, 0, this.xDim, this.yDim);
+        // this.dead(ctx);
+        this.fired = false;
+        window.clearInterval(this.timerId);
       } else {
         this.interval += 1;
         this.movePig();

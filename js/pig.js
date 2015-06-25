@@ -15,23 +15,26 @@
 
   Pig.prototype.move = function () {
     this.top += 2;
+    this.counter = 0;
+
     if (this.collide() || this.isHitGround()) {
       // console.log('gameover');
       this.game.gameOver = true;
+      // this.game.fired = false;
+
     }
 
-    // setTimeout(function () {
-      // this.isUp = false;
-    // }.bind(this), 1000);
   };
 
   Pig.prototype.up = function () {
-    this.isUp = true;
     this.top -= 80;
+    this.isUp = true;
+    // console.log(this.isUp);
   }
 
   Pig.prototype.render = function (ctx) {
 
+    console.log(this.isUp);
     ctx.fillStyle = "rgba(0, 0, 0, 0)";
     ctx.fillRect(
       this.left,
@@ -47,7 +50,8 @@
         ctx.drawImage(this.game.pigFlyDownImage, this.left, this.top, this.width, this.height);
       }
 
-    } else {
+    } else if (!this.isUp) {
+      // debugger;
       ctx.drawImage(this.game.pigFallImage, this.left, this.top, this.width, this.height);
     }
 
@@ -73,7 +77,7 @@
   };
 
   Pig.prototype.isHitGround = function () {
-    return (this.top + this.height > this.game.yDim);
+    return (this.top + this.height > this.game.yDim - 100);
   };
 
   var Obstacle = FlappyPig.Obstacle = function (game, top, height) {
