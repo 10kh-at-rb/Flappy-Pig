@@ -32,11 +32,16 @@
     })
     this.pig.render(ctx);
 
-    ctx.fillStyle = "black";
-    ctx.font = "24px Helvetica";
-    ctx.textAlign = "left";
-    ctx.textBaseline = "top";
+
+    // ctx.fillStyle = "black";
+    ctx.font = "24px flappy";
+    ctx.fillStyle = "white";
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "black";
+    // ctx.textAlign = "left";
+    // ctx.textBaseline = "top";
     ctx.fillText(this.score, 190, 32);
+    ctx.strokeText(this.score, 190, 32);
   };
 
   Game.prototype.movePig = function () {

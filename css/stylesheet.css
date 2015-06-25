@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'flappy';
+    src: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/flappy-webfont.eot');
+    src: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/flappy-webfont.eot?#iefix') format('embedded-opentype'),
+         url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/flappy-webfont.woff2') format('woff2'),
+         url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/flappy-webfont.woff') format('woff'),
+         url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/flappy-webfont.ttf') format('truetype'),
+         url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/flappy-webfont.svg#04b_19regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 .flappy-view {
   border: 10px solid black;
   display: inline-block;
