@@ -30,15 +30,11 @@
     ctx.fill();
   };
 
-  var Obstacle = FlappyPig.Obstacle = function (xDim, yDim, max, min, top) {
-    var topHeight = Math.floor(Math.random()*(max*yDim - min*yDim)) + min*yDim;
+  var Obstacle = FlappyPig.Obstacle = function (xDim, top, height) {
     this.fromLeft = xDim - 100;
-    this.fromTop = 0;
+    this.fromTop = top;
     this.width = 75;
-    this.height = topHeight;
-    if (!top) {
-      this.fromTop = yDim - this.height;
-    }
+    this.height = height;
   };
 
   Obstacle.prototype.move = function () {

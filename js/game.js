@@ -7,9 +7,13 @@
     this.xDim = xDim;
     this.yDim = yDim;
     this.pig = new FlappyPig.Pig();
-    var topPipeHeight =  Math.floor(Math.random()*(0.8*yDim - 0.3*yDim)) + 0.3*yDim;
-    this.obstacleTop = new FlappyPig.Obstacle(this.xDim, this.yDim, topPipeHeight);
-    this.obstacleBottom = new FlappyPig.Obstacle(this.xDim, this.yDim, 0.8, 0.3, false);
+
+    var topPipeHeight =  Math.floor(Math.random()*(0.8*yDim - 0.3*yDim)) + 0.3*yDim; // generates random height
+    this.obstacleTop = new FlappyPig.Obstacle(this.xDim, 0, topPipeHeight);
+
+    var bottomPipeTop = topPipeHeight + 100;
+    var bottomPipeHeight = this.yDim - bottomPipeTop;
+    this.obstacleBottom = new FlappyPig.Obstacle(this.xDim, bottomPipeTop, bottomPipeHeight);
   };
 
   Game.prototype.render = function (ctx) {
