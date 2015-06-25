@@ -11,11 +11,18 @@
 
 }
 
+.container {
+  background-image: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg.png');
+  background-size: 480px;
+}
 
 .flappy-view {
   border: 10px solid black;
   display: inline-block;
   width: 100%;
+  position: relative;
+  top: -10px;
+  left: -10px;
 }
 
 .row {

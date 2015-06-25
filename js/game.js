@@ -42,8 +42,8 @@
 
   Game.prototype.render = function (ctx) {
     ctx.clearRect(0, 0, this.xDim, this.yDim);
-    ctx.drawImage(this.bgImage, 0, 0, this.xDim, this.yDim)
-    ctx.drawImage(this.pigImage, this.pig.left, this.pig.top, 50, 40);
+    // ctx.drawImage(this.bgImage, 0, 0, this.xDim, this.yDim)
+    ctx.drawImage(this.pigImage, this.pig.left, this.pig.top, this.pig.width, this.pig.height);
 
     this.obstacles.forEach(function (obstacle) {
       obstacle.render(ctx);
@@ -51,15 +51,15 @@
 
 
 
-    ctx.drawImage(this.topPipeImage, this.obstacles[0].fromLeft, this.obstacles[0].height - this.yDim, 87, this.yDim);
-    ctx.drawImage(this.bottomPipeImage, this.obstacles[1].fromLeft, this.obstacles[1].fromTop, 87, this.yDim);
+    ctx.drawImage(this.topPipeImage, this.obstacles[0].fromLeft, this.obstacles[0].height - this.yDim, 87*1.6, this.yDim);
+    ctx.drawImage(this.bottomPipeImage, this.obstacles[1].fromLeft, this.obstacles[1].fromTop, 87*1.6, this.yDim);
     this.pig.render(ctx);
 
 
     // ctx.fillStyle = "black";
     ctx.font = "72px flappy";
     ctx.fillStyle = "white";
-    ctx.lineWidth = 3;
+    ctx.lineWidth = 4;
     ctx.strokeStyle = "black";
     // ctx.textAlign = "left";
     // ctx.textBaseline = "top";
@@ -99,7 +99,7 @@
     var topPipeHeight =  Math.floor(Math.random()*(0.8*this.yDim - 0.2*this.yDim)) + 0.2*this.yDim; // generates random height
     this.obstacleTop = new FlappyPig.Obstacle(this, 0, topPipeHeight);
 
-    var bottomPipeTop = topPipeHeight + 100;
+    var bottomPipeTop = topPipeHeight + 200;
     var bottomPipeHeight = this.yDim - bottomPipeTop;
     this.obstacleBottom = new FlappyPig.Obstacle(this,bottomPipeTop, bottomPipeHeight);
 
