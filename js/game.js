@@ -30,9 +30,13 @@
     this.obstacles.forEach(function (obstacle) {
       obstacle.render(ctx);
     })
-
-
     this.pig.render(ctx);
+
+    ctx.fillStyle = "black";
+    ctx.font = "24px Helvetica";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "top";
+    ctx.fillText(this.score, 190, 32);
   };
 
   Game.prototype.movePig = function () {
