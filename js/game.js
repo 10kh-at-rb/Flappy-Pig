@@ -9,6 +9,7 @@
     this.yDim = this.canvas.height;
     this.obstacles = this.generateNewObstacles();
     this.pig = new FlappyPig.Pig(this);
+    this.score = 0;
     this.gameOver = false;
 
     this.fired = false;
@@ -44,8 +45,16 @@
     this.obstacles.forEach(function (obstacle) {
       obstacle.move();
     });
-    if (this.obstacles[0].fromLeft <= 0) {
+
+    if ((this.obstacleTop.fromLeft + this.obstacleTop.width) === 0) {
       this.obstacles = this.generateNewObstacles();
+
+    }
+
+    if (this.pig.left === this.obstacleTop.fromLeft + this.obstacleTop.width) {
+      this.score += 1;
+      // debugger;
+      console.log(this.score);
     }
   };
 

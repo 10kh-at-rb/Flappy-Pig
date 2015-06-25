@@ -37,6 +37,7 @@
 
 
   };
+  
 
   Pig.prototype.collide = function () {
     // if the pig enters the pipe area
@@ -70,10 +71,6 @@
 
   Obstacle.prototype.move = function () {
     this.fromLeft -= 1;
-    if (this.fromLeft + this.width < 0) {
-      this.game.obstacles = this.game.generateNewObstacles();
-    }
-
   };
 
 
