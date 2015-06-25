@@ -30,7 +30,7 @@
     this.pigImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/loading-gif-animate.gif";
 
     this.bgImage = new Image();
-    this.bgImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg.jpg";
+    this.bgImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg.png";
 
     this.topPipeImage = new Image();
     this.topPipeImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pipe_top.png"
@@ -42,7 +42,7 @@
 
   Game.prototype.render = function (ctx) {
     ctx.clearRect(0, 0, this.xDim, this.yDim);
-    ctx.drawImage(this.bgImage, 0, 0, 480, 640)
+    ctx.drawImage(this.bgImage, 0, 0, this.xDim, this.yDim)
     ctx.drawImage(this.pigImage, this.pig.left, this.pig.top, 50, 40);
 
     this.obstacles.forEach(function (obstacle) {
@@ -51,20 +51,20 @@
 
 
 
-    ctx.drawImage(this.topPipeImage, this.obstacles[0].fromLeft, this.obstacles[0].height - 640, 87, 640);
-    ctx.drawImage(this.bottomPipeImage, this.obstacles[1].fromLeft, this.obstacles[1].fromTop, 87, 640);
+    ctx.drawImage(this.topPipeImage, this.obstacles[0].fromLeft, this.obstacles[0].height - this.yDim, 87, this.yDim);
+    ctx.drawImage(this.bottomPipeImage, this.obstacles[1].fromLeft, this.obstacles[1].fromTop, 87, this.yDim);
     this.pig.render(ctx);
 
 
     // ctx.fillStyle = "black";
-    ctx.font = "24px flappy";
+    ctx.font = "72px flappy";
     ctx.fillStyle = "white";
     ctx.lineWidth = 3;
     ctx.strokeStyle = "black";
     // ctx.textAlign = "left";
     // ctx.textBaseline = "top";
-    ctx.fillText(this.score, 190, 32);
-    ctx.strokeText(this.score, 190, 32);
+    ctx.fillText(this.score, 360, 150);
+    ctx.strokeText(this.score, 360, 150);
 
     // debugger;
     // if (this.pigReady) {

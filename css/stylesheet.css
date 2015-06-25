@@ -15,6 +15,7 @@
 .flappy-view {
   border: 10px solid black;
   display: inline-block;
+  width: 100%;
 }
 
 .row {

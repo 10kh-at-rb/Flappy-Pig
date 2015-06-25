@@ -7,15 +7,16 @@
 
 <!-- <script type="text/javascript" src="../js/flappy_pig-view.js"></script> -->
 
-<canvas class="flappy-view"></canvas>
-
+<div style="width: 480px; height: 640px;">
+  <canvas class="flappy-view" width="480" height="640"></canvas>
+</div>
 
 <script type="text/javascript">
 
 
     var canvasEl = document.getElementsByTagName("canvas")[0];
-    canvasEl.height = 640;
-    canvasEl.width = 480;
+    canvasEl.height = 1024;
+    canvasEl.width = 768;
 
     new FlappyPig.Game(
       canvasEl
