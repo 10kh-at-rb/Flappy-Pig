@@ -23,25 +23,36 @@
 
     //
     // this.pigReady = false;
-    this.pigImage = new Image();
     // this.pigImage.onload = function () {
     //   this.pigReady = true;
     // };
+    this.pigImage = new Image();
     this.pigImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/loading-gif-animate.gif";
 
-    $(this.pigImage).click(function () {
-      alert('lewjalkfew')
-    })
+    this.bgImage = new Image();
+    this.bgImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg.jpg";
+
+    this.topPipeImage = new Image();
+    this.topPipeImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pipe_top.png"
+
+    this.bottomPipeImage = new Image();
+    this.bottomPipeImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pipe_bottom.png"
 
   };
 
   Game.prototype.render = function (ctx) {
     ctx.clearRect(0, 0, this.xDim, this.yDim);
-
+    ctx.drawImage(this.bgImage, 0, 0, 480, 640)
+    ctx.drawImage(this.pigImage, this.pig.left, this.pig.top, 50, 40);
 
     this.obstacles.forEach(function (obstacle) {
       obstacle.render(ctx);
     })
+
+
+
+    ctx.drawImage(this.topPipeImage, this.obstacles[0].fromLeft, this.obstacles[0].height - 640, 87, 640);
+    ctx.drawImage(this.bottomPipeImage, this.obstacles[1].fromLeft, this.obstacles[1].fromTop, 87, 640);
     this.pig.render(ctx);
 
 
@@ -57,7 +68,7 @@
 
     // debugger;
     // if (this.pigReady) {
-      ctx.drawImage(this.pigImage, this.pig.left, this.pig.top, 50, 40);
+
     // }
   };
 

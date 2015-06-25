@@ -37,7 +37,7 @@
 
 
   };
-  
+
 
   Pig.prototype.collide = function () {
     // if the pig enters the pipe area
@@ -65,7 +65,7 @@
     this.game = game;
     this.fromLeft = game.xDim;
     this.fromTop = top;
-    this.width = 75;
+    this.width = 87;
     this.height = height;
   };
 
@@ -76,7 +76,7 @@
 
 
   Obstacle.prototype.render = function (ctx) {
-    ctx.fillStyle = "green";
+    ctx.fillStyle = "rgba(0, 0, 0, 0)";
     ctx.fillRect(
       this.fromLeft,
       this.fromTop,
