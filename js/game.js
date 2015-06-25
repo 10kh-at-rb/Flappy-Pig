@@ -8,6 +8,7 @@
     this.yDim = yDim;
     this.obstacles = this.generateNewObstacles();
     this.pig = new FlappyPig.Pig(this);
+    this.gameOver = false;
 
     $(window).keydown(function (e) {
       this.pig.up();
@@ -33,22 +34,23 @@
     var game = this;
     this.obstacles.forEach(function (obstacle) {
       obstacle.move();
-    })
+    });
     if (this.obstacles[0].fromLeft <= 0) {
       this.obstacles = this.generateNewObstacles();
     }
-  }
+  };
 
   Game.prototype.generateNewObstacles = function () {
     var topPipeHeight =  Math.floor(Math.random()*(0.8*this.yDim - 0.2*this.yDim)) + 0.2*this.yDim; // generates random height
-    this.obstacleTop = new FlappyPig.Obstacle(this.xDim, 0, topPipeHeight);
+    this.obstacleTop = new FlappyPig.Obstacle(this, 0, topPipeHeight);
 
     var bottomPipeTop = topPipeHeight + 100;
     var bottomPipeHeight = this.yDim - bottomPipeTop;
-    this.obstacleBottom = new FlappyPig.Obstacle(this.xDim, bottomPipeTop, bottomPipeHeight);
+    this.obstacleBottom = new FlappyPig.Obstacle(this,bottomPipeTop, bottomPipeHeight);
 
     return [this.obstacleTop, this.obstacleBottom];
-  }
+  };
+
   Game.prototype.start = function (canvasEl) {
     var ctx = canvasEl.getContext("2d");
 

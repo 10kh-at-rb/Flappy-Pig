@@ -5,49 +5,78 @@
 
   var Pig = FlappyPig.Pig = function (game) {
     this.game = game;
-    this.centerX = 100;
-    this.centerY = 100;
-    this.radius = 30;
+    this.top = 100;
+    this.left = 100;
+    this.width = 50;
+    this.height = 40;
     this.color = "pink";
-
   };
 
   Pig.prototype.move = function () {
-    this.centerY += 1;
+    this.top += 1;
 
+    if (this.collide() || this.isHitGround()) {
+      console.log('gameover');
+      this.game.gameOver = true;
+    }
   };
 
   Pig.prototype.up = function () {
-    this.centerY -= 20;
+    this.top -= 20;
   }
 
   Pig.prototype.render = function (ctx) {
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
 
-    ctx.arc(
-      this.centerX,
-      this.centerY,
-      this.radius,
-      0,
-      2 * Math.PI,
-      false
+    ctx.fillStyle = "pink";
+    ctx.fillRect(
+      this.left,
+      this.top,
+      this.width,
+      this.height
     );
 
-    ctx.fill();
+
   };
 
-  var Obstacle = FlappyPig.Obstacle = function (xDim, top, height) {
-    this.fromLeft = xDim;
+  Pig.prototype.collide = function () {
+    // if the pig enters the pipe area
+    if (
+        // if the right side of the pig is greater than the obstacle's left
+        ((this.left + this.width) >= this.game.obstacles[0].fromLeft) &&
+        // the left side of the pig is less than the right side of the obstacle
+        (this.left <= this.game.obstacles[0].fromLeft + this.game.obstacles[0].width)
+        // (this.game.obstacles[0].fromLeft + this.game.obstacles[0].width <= this.left)
+        ) {
+      if (this.game.obstacleTop.height < this.top && this.game.obstacleBottom.fromTop > this.top+this.height) {
+        // return true
+      } else {
+      // find the empty area
+        return true;
+      }
+    }
+  };
+
+  Pig.prototype.isHitGround = function () {
+    return (this.top + this.height > this.game.yDim);
+  };
+
+  var Obstacle = FlappyPig.Obstacle = function (game, top, height) {
+    this.game = game;
+    this.fromLeft = game.xDim;
     this.fromTop = top;
     this.width = 75;
     this.height = height;
   };
 
   Obstacle.prototype.move = function () {
-    this.fromLeft -= 10;
+    this.fromLeft -= 1;
+    if (this.fromLeft <= -this.width) {
+      this.game.obstacles = this.game.generateNewObstacles();
+    }
 
   };
+
+
 
   Obstacle.prototype.render = function (ctx) {
     ctx.fillStyle = "green";
@@ -57,5 +86,5 @@
       this.width,
       this.height
     );
-  }
+  };
 })();
