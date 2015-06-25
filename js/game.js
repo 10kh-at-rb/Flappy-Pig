@@ -11,7 +11,6 @@
     this.pig = new FlappyPig.Pig(this);
     this.score = 0;
     this.gameOver = false;
-
     this.fired = false;
     $(window).keydown(function (e) {
       if (this.fired) {
@@ -22,11 +21,24 @@
       }
     }.bind(this));
 
+    //
+    // this.pigReady = false;
+    this.pigImage = new Image();
+    // this.pigImage.onload = function () {
+    //   this.pigReady = true;
+    // };
+    this.pigImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/loading-gif-animate.gif";
+
+    $(this.pigImage).click(function () {
+      alert('lewjalkfew')
+    })
 
   };
 
   Game.prototype.render = function (ctx) {
     ctx.clearRect(0, 0, this.xDim, this.yDim);
+
+
     this.obstacles.forEach(function (obstacle) {
       obstacle.render(ctx);
     })
@@ -42,6 +54,11 @@
     // ctx.textBaseline = "top";
     ctx.fillText(this.score, 190, 32);
     ctx.strokeText(this.score, 190, 32);
+
+    // debugger;
+    // if (this.pigReady) {
+      ctx.drawImage(this.pigImage, this.pig.left, this.pig.top, 50, 40);
+    // }
   };
 
   Game.prototype.movePig = function () {
