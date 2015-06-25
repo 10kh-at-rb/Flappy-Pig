@@ -7,9 +7,10 @@
     this.canvas = canvas;
     this.xDim = this.canvas.width;
     this.yDim = this.canvas.height;
-
+    this.images();
     this.newGame();
 
+    this.onLand();
     $(window).keydown(function (e) {
       if (e.keyCode === 32) {
         if (this.fired) {
@@ -30,11 +31,35 @@
 
     }.bind(this));
 
+
     // this.pigReady = false;
     // this.pigImage.onload = function () {
     //   this.pigReady = true;
     // };
 
+  };
+
+  Game.prototype.onLand = function () {
+    var ctx = this.canvas.getContext("2d");
+    (this.landingImage).onload = function () {
+      ctx.drawImage(this.landingImage, 0, 0, this.xDim, this.yDim);
+    }.bind(this)
+  //   setTimeout(function () {
+  //
+  //   ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
+  // }.bind(this), 5000);
+
+
+
+
+
+
+  }
+
+  Game.prototype.images = function () {
+
+    this.landingImage = new Image();
+    this.landingImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/landing.gif";
 
     this.bgImage_1 = new Image();
     this.bgImage_1.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_1.gif";
@@ -67,6 +92,13 @@
     //
     // this.bgImage_10 = new Image();
     // this.bgImage_10.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_10.gif";
+
+    // this.startImage = new Image();
+    // this.startImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/start.gif";
+
+    this.pigNormImage = new Image();
+    this.pigNormImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pig.png";
+
     this.pigFlyImage = new Image();
     this.pigFlyImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pig_fly.png";
 
@@ -84,7 +116,6 @@
 
     this.scoreBoardImage = new Image();
     this.scoreBoardImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/score_board.png";
-
   };
 
   Game.prototype.newGame = function () {
