@@ -98,8 +98,8 @@
     // }
     // ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim)
 
-    console.log(this.interval);
-    console.log(this.xDim);
+    // console.log(this.interval);
+    // console.log(this.xDim);
     // if (this.interval % this.xDim === 0) {
       ctx.drawImage(this.bgImage_bar, (this.obstacles[0].fromLeft - this.xDim), 900, 2250, 28.5);
     // }
