@@ -7,12 +7,9 @@
     this.canvas = canvas;
     this.xDim = this.canvas.width;
     this.yDim = this.canvas.height;
-    this.obstacles = this.generateNewObstacles();
-    this.pig = new FlappyPig.Pig(this);
-    this.score = 0;
-    this.gameOver = false;
-    this.fired = false;
-    this.interval = 0;
+
+    this.newGame();
+
     $(window).keydown(function (e) {
       if (e.keyCode === 32) {
         if (this.fired) {
@@ -21,12 +18,7 @@
         } else {
           this.gameOver = false;
 
-          this.obstacles = this.generateNewObstacles();
-          this.pig = new FlappyPig.Pig(this);
-          this.score = 0;
-          this.gameOver = false;
-          this.fired = false;
-          this.interval = 0;
+          this.newGame();
 
 
           this.start();
@@ -38,8 +30,6 @@
 
     }.bind(this));
 
-
-    //
     // this.pigReady = false;
     // this.pigImage.onload = function () {
     //   this.pigReady = true;
@@ -95,6 +85,15 @@
     this.scoreBoardImage = new Image();
     this.scoreBoardImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/score_board.png";
 
+  };
+
+  Game.prototype.newGame = function () {
+    this.obstacles = this.generateNewObstacles();
+    this.pig = new FlappyPig.Pig(this);
+    this.score = 0;
+    this.gameOver = false;
+    this.fired = false;
+    this.interval = 0;
   };
 
   Game.prototype.render = function (ctx) {
@@ -217,8 +216,8 @@
 
     this.timerId = window.setInterval((function () {
       if (this.gameOver) {
-        // ctx.clearRect(0, 0, this.xDim, this.yDim);
-        // this.dead(ctx);
+        ctx.clearRect(0, 0, this.xDim, this.yDim);
+        this.dead(ctx);
         this.fired = false;
         window.clearInterval(this.timerId);
       } else {
