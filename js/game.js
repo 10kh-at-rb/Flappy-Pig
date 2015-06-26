@@ -184,8 +184,9 @@
   };
 
   Game.prototype.dead = function (ctx) {
-    ctx.clearRect(0, 0, this.xDim, this.yDim);
-    ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
+    // ctx.clearRect(0, 0, this.xDim, this.yDim);
+    // ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
+    this.render(ctx);
     ctx.font = "100px flappy";
     ctx.textAlign = 'center';
     ctx.fillStyle = "white";

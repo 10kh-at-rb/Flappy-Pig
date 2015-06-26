@@ -7,7 +7,7 @@
     this.game = game;
 
     this.velY = 0;
-    this.speed = 6;
+    this.speed = 7;
     this.top = 400;
     this.left = 350;
     this.width = 90;
@@ -39,7 +39,7 @@
 
   Pig.prototype.up = function () {
     // this.speed = 2;
-    this.velY = -15;
+    this.velY = -17;
 
     // this.speed = 10; // this makes it so any move is at speed of 10
     console.log('here');
@@ -62,14 +62,14 @@
 
     if (this.isUp) {
       if (this.game.interval % 6 === 0 || this.game.interval % 7 === 0 || this.game.interval % 8 === 0 || this.game.interval % 9 === 0 || this.game.interval % 10 === 0) {
-        ctx.drawImage(this.game.pigFlyImage, this.left, this.top, this.width, this.height);
+        ctx.drawImage(this.game.pigFlyImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
       } else {
-        ctx.drawImage(this.game.pigFlyDownImage, this.left, this.top, this.width, this.height);
+        ctx.drawImage(this.game.pigFlyDownImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
       }
 
     } else if (!this.isUp) {
       // debugger;
-      ctx.drawImage(this.game.pigFallImage, this.left, this.top, this.width, this.height);
+      ctx.drawImage(this.game.pigFallImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
     }
 
   };
