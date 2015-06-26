@@ -237,6 +237,16 @@
   };
 
   Game.prototype.generateNewObstacles = function () {
+    var bottomPipeHeight =  Math.floor(Math.random()*(0.7*this.yDim - 0.1*this.yDim)) + 0.1*this.yDim; // generates random height
+    this.obstacleBottom = new FlappyPig.Obstacle(this, this.yDim - bottomPipeHeight, bottomPipeHeight);
+
+    var topPipeHeight = this.yDim - bottomPipeHeight -250;
+    this.obstacleTop = new FlappyPig.Obstacle(0, topPipeHeight);
+
+    return [this.obstacleTop, this.obstacleBottom];
+
+
+
     var topPipeHeight =  Math.floor(Math.random()*(0.7*this.yDim - 0.1*this.yDim)) + 0.1*this.yDim; // generates random height
     this.obstacleTop = new FlappyPig.Obstacle(this, 0, topPipeHeight);
 

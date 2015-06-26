@@ -52,7 +52,7 @@
   Pig.prototype.render = function (ctx) {
 
     console.log(this.isUp);
-    ctx.fillStyle = "rgba(0, 0, 0, 0)";
+    ctx.fillStyle = "rgba(0, 0, 0, 1)";
     ctx.fillRect(
       this.left,
       this.top,
