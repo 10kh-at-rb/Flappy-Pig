@@ -40,10 +40,10 @@
   };
 
   Game.prototype.onLand = function () {
-    var ctx = this.canvas.getContext("2d");
-    (this.landingImage).onload = function () {
-      ctx.drawImage(this.landingImage, 0, 0, this.xDim, this.yDim);
-    }.bind(this)
+    // var ctx = this.canvas.getContext("2d");
+    // (this.landingImage).onload = function () {
+    //   ctx.drawImage(this.landingImage, 0, 0, this.xDim, this.yDim);
+    // }.bind(this)
   //   setTimeout(function () {
   //
   //   ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
