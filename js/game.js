@@ -66,35 +66,6 @@
 
     this.bgImage_bar = new Image();
     this.bgImage_bar.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_bar.gif";
-    // this.bgImage_2 = new Image();
-    // this.bgImage_2.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_2.gif";
-    //
-    // this.bgImage_3 = new Image();
-    // this.bgImage_3.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_3.gif";
-    //
-    // this.bgImage_4 = new Image();
-    // this.bgImage_4.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_4.gif";
-    //
-    // this.bgImage_5 = new Image();
-    // this.bgImage_5.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_5.gif";
-    //
-    // this.bgImage_6 = new Image();
-    // this.bgImage_6.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_6.gif";
-    //
-    // this.bgImage_7 = new Image();
-    // this.bgImage_7.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_7.gif";
-    //
-    // this.bgImage_8 = new Image();
-    // this.bgImage_8.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_8.gif";
-    //
-    // this.bgImage_9 = new Image();
-    // this.bgImage_9.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_9.gif";
-    //
-    // this.bgImage_10 = new Image();
-    // this.bgImage_10.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_10.gif";
-
-    // this.startImage = new Image();
-    // this.startImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/start.gif";
 
     this.pigNormImage = new Image();
     this.pigNormImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pig.png";
@@ -156,8 +127,6 @@
     });
     this.pig.render(ctx);
 
-    // ctx.clearRect(0, 0, this.xDim, this.yDim);
-    // ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
     ctx.font = "100px flappy";
     ctx.textAlign = 'center';
     ctx.fillStyle = "white";
@@ -165,7 +134,6 @@
     ctx.strokeStyle = "black";
     ctx.fillText("GAMEOVER", this.xDim/2, 350);
     ctx.strokeText("GAMEOVER", this.xDim/2, 350);
-
 
     ctx.drawImage(this.scoreBoardImage, 290, 400, 185, 165);
 
@@ -176,8 +144,6 @@
     ctx.strokeStyle = "black";
     ctx.fillText(this.score, this.xDim/2, 530);
     ctx.strokeText(this.score, this.xDim/2, 530);
-
-
   }
 
   Game.prototype.movePig = function () {
@@ -198,12 +164,9 @@
 
     if (this.pig.left > this.obstacleTop.fromLeft + this.obstacleTop.width) {
       if (!this.gavePoint) {
-
         this.score += 1;
         this.gavePoint = true;
       }
-      // debugger;
-      console.log(this.score);
     }
   };
 

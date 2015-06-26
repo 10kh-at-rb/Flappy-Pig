@@ -11,7 +11,6 @@
 
 }
 
-
 @font-face {
     font-family: 'Silk';
     src: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/font/Pixel/slkscr-webfont.eot');
@@ -24,9 +23,6 @@
     font-style: normal;
 
 }
-
-
-
 
 @font-face {
     font-family: 'Silk-Expanded';
@@ -41,10 +37,17 @@
 
 }
 
-
+.preload {
+  position: absolute;
+  left: -10000;
+  top: -10000;
+}
+.font-flappy {
+  font: 12px 'flappy';
+}
 .container {
-  /*background-image: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg.png');*/
-  background-size: 480px;
+  width: 480px;
+  height: 640px;
 }
 
 .flappy-view {
