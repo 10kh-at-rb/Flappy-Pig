@@ -1,0 +1,36 @@
+<form action="<%= users_scores_url %>" method="post" class="leaderboard">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="text" name="leaderboard[name]" placeholder="Add your name!">
+  <input type="text" name="leaderboard[score]">
+
+  <input type="Submit" class="submit-button">
+</form>
+
+
+<script type="text/javascript">
+  $('.leaderboard').on('submit', function(event) {
+    event.preventDefault();
+    $('.submit-button').prop('disabled', true);
+    var formData = $(event.currentTarget).serializeJSON();
+
+    $.ajax({
+      type: "POST",
+      url: "/users_scores",
+      dataType: "json",
+      data: formData,
+      success: function (response) {
+        console.log("successful");
+        handleSuccess(response);
+      }
+    })
+  })
+
+  function handleSuccess (response) {
+    $('.submit-button').prop("disabled", false);
+
+    $('.leaderboard-name').append($('<li>').html(response.name));
+    $('.leaderboard-score').append($('<li>').html(response.score));
+  };
+</script>

@@ -24,6 +24,22 @@
   <canvas class="flappy-view"></canvas>
 </div>
 
+<%= render "leaderboard_form" %>
+
+
+
+<div class="leaderboard-container">
+  <ul class="leaderboard-name">
+    <% @users_scores.each do |user| %>
+      <li><%= user.name %></li>
+    <% end %>
+  </ul>
+  <ul class="leaderboard-score">
+    <% @users_scores.each do |user| %>
+      <li><%= user.score %></li>
+    <% end %>
+  </ul>
+</div>
 <script type="text/javascript">
 
 
@@ -34,21 +50,4 @@
     new FlappyPig.Game(
       canvasEl
     );
-
-
-    // var fired = false;
-    // $(window).keydown(function (e) {
-    //   if (fired) {
-    //     return
-    //   } else {
-    //     if (e.keyCode === 32) {
-    //       new FlappyPig.Game(
-    //         canvasEl.width,
-    //         canvasEl.height
-    //       ).start(canvasEl);
-    //     }
-    //     fired = true;
-    //   }
-    //
-    // })
 </script>
