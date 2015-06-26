@@ -1,6 +1,6 @@
 #Flappy Pig
 
-[Live!](https://www.linkedin.com/in/karensling)
+[Live!](http://karenling.github.io/Flappy-Pig/html/)
 
 Inspired by the addicting game, Flappy Bird, but with a flying Pig! Built with JavaScript and HTML5 Canvas.
 
