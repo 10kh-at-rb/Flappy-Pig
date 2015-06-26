@@ -45,6 +45,9 @@
 .font-flappy {
   font: 12px 'flappy';
 }
+.font-silk {
+  font: 12px 'Silk';
+}
 .container {
   width: 480px;
   height: 640px;

@@ -178,10 +178,44 @@
     ctx.fillStyle = "white";
     ctx.lineWidth = 4;
     ctx.strokeStyle = "black";
-    ctx.fillText(this.score, this.xDim/2, 530);
-    ctx.strokeText(this.score, this.xDim/2, 530);
+    ctx.fillText(this.score, this.xDim/2, 330);
+    ctx.strokeText(this.score, this.xDim/2, 330);
 
-    ctx.drawImage(this.leaderBoardImage, 80, 400, 607, 475)
+    ctx.drawImage(this.leaderBoardImage, 80, 400, 607, 475);
+
+
+    ctx.font = "30px Silk";
+
+
+    ctx.fillStyle = "#f0eaa1";
+    ctx.textAlign = 'left';
+    ctx.fillText("Karen", 180, 593);
+    ctx.fillText("Jane", 180, 643);
+    ctx.fillText("Jerry", 180, 693);
+    ctx.fillText("John", 180, 743);
+
+    ctx.textAlign = 'right';
+    ctx.fillText("100", 580, 593);
+    ctx.fillText("99", 580, 643);
+    ctx.fillText("94", 580, 693);
+    ctx.fillText("10", 580, 743);
+
+    // left first
+    ctx.fillStyle = "#e86101";
+    ctx.textAlign = 'left';
+    ctx.fillText("Karen", 180, 590);
+    ctx.fillText("Jane", 180, 640);
+    ctx.fillText("Jerry", 180, 690);
+    ctx.fillText("John", 180, 740);
+
+    ctx.textAlign = 'right';
+    ctx.fillText("100", 580, 590);
+    ctx.fillText("99", 580, 640);
+    ctx.fillText("94", 580, 690);
+    ctx.fillText("10", 580, 740);
+    // bg
+
+
   }
 
   Game.prototype.movePig = function () {
