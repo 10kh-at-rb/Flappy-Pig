@@ -1,0 +1,54 @@
+<link href='http://fonts.googleapis.com/css?family=Monofett' rel='stylesheet' type='text/css'>
+<!-- <script type="text/javascript" src="../../../js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="../js/pig.js"></script>
+<script type="text/javascript" src="../js/game.js"></script> -->
+
+
+
+<div class="preload">
+  <img src="https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/landing.gif">
+  <img src="https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_1.gif">
+  <img src="https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_bar.gif">
+  <img src="https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pig.png">
+  <img src="https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pig_fly.png">
+  <img src="https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pig_fly_down.png">
+  <img src="https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pig_fall.png">
+  <img src="https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pipe_top.png">
+  <img src="https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pipe_bottom.png">
+  <img src="https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/score_board.png">
+  <div class="font-flappy">Preload</div>
+  <div class="font-silk">Preload</div>
+</div>
+
+<div class="container">
+  <canvas class="flappy-view"></canvas>
+</div>
+
+<script type="text/javascript">
+
+
+    var canvasEl = document.getElementsByTagName("canvas")[0];
+    canvasEl.height = 1024;
+    canvasEl.width = 768;
+
+    new FlappyPig.Game(
+      canvasEl
+    );
+
+
+    // var fired = false;
+    // $(window).keydown(function (e) {
+    //   if (fired) {
+    //     return
+    //   } else {
+    //     if (e.keyCode === 32) {
+    //       new FlappyPig.Game(
+    //         canvasEl.width,
+    //         canvasEl.height
+    //       ).start(canvasEl);
+    //     }
+    //     fired = true;
+    //   }
+    //
+    // })
+</script>
