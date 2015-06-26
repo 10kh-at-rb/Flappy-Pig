@@ -13,6 +13,7 @@
     this.width = 90;
     this.height = 65;
     this.isUp = false;
+    this.countIntervalsBeforeGoingDown = 0;
     this.color = "pink";
   };
 
@@ -34,6 +35,7 @@
     this.velY = -17;
 
     this.isUp = true;
+    this.countIntervalsBeforeGoingDown = 0;
   }
 
   Pig.prototype.render = function (ctx) {
@@ -47,17 +49,41 @@
       this.height
     );
 
-    if (this.isUp) {
-      if (this.game.interval % 6 === 0 || this.game.interval % 7 === 0 || this.game.interval % 8 === 0 || this.game.interval % 9 === 0 || this.game.interval % 10 === 0) {
-        ctx.drawImage(this.game.pigFlyImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
-      } else {
-        ctx.drawImage(this.game.pigFlyDownImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
-      }
+    //
 
-    } else if (!this.isUp) {
-      // debugger;
-      ctx.drawImage(this.game.pigFallImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
+
+
+    if (this.velY === this.speed) {
+      this.countIntervalsBeforeGoingDown ++;
     }
+
+    if (this.countIntervalsBeforeGoingDown > 20 && this.velY > 0 && this.velY === this.speed) {
+
+      ctx.drawImage(this.game.pigFallImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
+      return;
+
+    }
+
+    if (this.velY < 0 ) {
+      ctx.drawImage(this.game.pigFlyDownImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
+    } else if (this.velY > 0) {
+      ctx.drawImage(this.game.pigFlyImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
+    }
+
+
+
+
+    // if (this.isUp) {
+    //   if (this.game.interval % 6 === 0 || this.game.interval % 7 === 0 || this.game.interval % 8 === 0 || this.game.interval % 9 === 0 || this.game.interval % 10 === 0) {
+    //
+    //   } else {
+    //
+    //   }
+    //
+    // } else if (!this.isUp) {
+    //   // debugger;
+    //   ctx.drawImage(this.game.pigFallImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
+    // }
 
   };
 
