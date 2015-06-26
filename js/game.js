@@ -9,14 +9,27 @@
     this.yDim = this.canvas.height;
     this.images();
     this.newGame();
+    this.landingInterval = 0;
+    this.landingVelY = 0;
+    this.landingSpeed = 0.7;
+    this.landingTop = 370;
 
-    this.onLand();
+
+
+    this.landingTimer = window.setInterval(function () {
+      this.onLand.call(this);
+    }.bind(this));
+
+
+    // this.onLand();
     $(window).keydown(function (e) {
       if (e.keyCode === 32) {
         if (this.fired) {
+
           this.pig.up();
           console.log('fired is true')
         } else {
+          window.clearInterval(this.landingTimer);
           this.gameOver = false;
 
           this.newGame();
@@ -31,19 +44,38 @@
 
     }.bind(this));
 
+var ctx = this.canvas.getContext("2d");
 
-    // this.pigReady = false;
-    // this.pigImage.onload = function () {
-    //   this.pigReady = true;
-    // };
+
+// (this.pigFlyDownImage).onload = function () {
+//   ctx.drawImage(this.pigFlyDownImage, this.pig.left - 15, this.landingTop, this.pig.width + 30, this.pig.height + 30);
+// }.bind(this)
+// ctx.drawImage(this.pigFlyImage, this.pig.left - 15, this.landingTop, this.pig.width + 30, this.pig.height + 30);
 
   };
 
   Game.prototype.onLand = function () {
+    this.landingInterval += 1;
     var ctx = this.canvas.getContext("2d");
-    (this.landingImage).onload = function () {
-      ctx.drawImage(this.landingImage, 0, 0, this.xDim, this.yDim);
-    }.bind(this)
+    ctx.clearRect(0, 0, this.xDim, this.yDim);
+    ctx.drawImage(this.landingImage, 0, 0, this.xDim, this.yDim);
+
+    // var image = this.pigFlyImage;
+    if (this.landingTop <= 370 && this.landingVelY < this.landingSpeed) {
+      this.landingVelY += 0.7;
+    }
+    if (this.landingTop > 450 && this.landingVelY > -this.landingSpeed) {
+      this.landingVelY -= 0.7;
+    }
+    this.landingTop += this.landingVelY;
+
+    if (this.landingVelY > 0) {
+      ctx.drawImage(this.pigFlyImage, this.pig.left - 15, this.landingTop, this.pig.width + 30, this.pig.height + 30);
+    } else if (this.landingVelY < 0) {
+      ctx.drawImage(this.pigFlyDownImage, this.pig.left - 15, this.landingTop, this.pig.width + 30, this.pig.height + 30);
+    }
+
+
   //   setTimeout(function () {
   //
   //   ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
