@@ -17,7 +17,6 @@
   };
 
   Pig.prototype.move = function () {
-    // this.top += 5;
     this.counter = 0;
 
     if (this.velY < this.speed) {
@@ -27,26 +26,14 @@
     this.top += this.velY;
 
     if (this.collide() || this.isHitGround()) {
-      // console.log('gameover');
       this.game.gameOver = true;
-      // this.game.fired = false;
-
     }
-
-    console.log(this.velY);
-
   };
 
   Pig.prototype.up = function () {
-    // this.speed = 2;
     this.velY = -17;
 
-    // this.speed = 10; // this makes it so any move is at speed of 10
-    console.log('here');
-
-    // this.top += this.velY;
     this.isUp = true;
-    // console.log(this.isUp);
   }
 
   Pig.prototype.render = function (ctx) {
@@ -94,7 +81,7 @@
   };
 
   Pig.prototype.isHitGround = function () {
-    return (this.top + this.height > this.game.yDim - 100);
+    return (this.top + this.height > this.game.yDim - this.game.yDim * 0.125);
   };
 
   var Obstacle = FlappyPig.Obstacle = function (game, top, height) {
@@ -111,12 +98,8 @@
     if (this.velX > -this.speed) {
       this.velX--;
     }
-
-
     this.fromLeft += this.velX;
   };
-
-
 
   Obstacle.prototype.render = function (ctx) {
     ctx.fillStyle = "rgba(0, 0, 0, 0)";
