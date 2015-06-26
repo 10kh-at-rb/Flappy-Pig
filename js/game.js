@@ -16,6 +16,7 @@
 
 
 
+
     this.landingTimer = window.setInterval(function () {
       this.onLand.call(this);
     }.bind(this));
@@ -44,7 +45,7 @@
 
     }.bind(this));
 
-var ctx = this.canvas.getContext("2d");
+// var ctx = this.canvas.getContext("2d");
 
 
 // (this.pigFlyDownImage).onload = function () {
@@ -119,6 +120,9 @@ var ctx = this.canvas.getContext("2d");
 
     this.scoreBoardImage = new Image();
     this.scoreBoardImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/score_board.png";
+
+    this.leaderBoardImage = new Image();
+    this.leaderBoardImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/leaderboard.gif";
   };
 
   Game.prototype.newGame = function () {
@@ -164,10 +168,10 @@ var ctx = this.canvas.getContext("2d");
     ctx.fillStyle = "white";
     ctx.lineWidth = 4;
     ctx.strokeStyle = "black";
-    ctx.fillText("GAMEOVER", this.xDim/2, 350);
-    ctx.strokeText("GAMEOVER", this.xDim/2, 350);
+    ctx.fillText("GAMEOVER", this.xDim/2, 150);
+    ctx.strokeText("GAMEOVER", this.xDim/2, 150);
 
-    ctx.drawImage(this.scoreBoardImage, 290, 400, 185, 165);
+    ctx.drawImage(this.scoreBoardImage, 290, 200, 185, 165);
 
     ctx.font = "60px flappy";
     ctx.textAlign = 'center';
@@ -176,6 +180,8 @@ var ctx = this.canvas.getContext("2d");
     ctx.strokeStyle = "black";
     ctx.fillText(this.score, this.xDim/2, 530);
     ctx.strokeText(this.score, this.xDim/2, 530);
+
+    ctx.drawImage(this.leaderBoardImage, 80, 400, 607, 475)
   }
 
   Game.prototype.movePig = function () {
