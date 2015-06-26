@@ -5,6 +5,9 @@
 
   var Pig = FlappyPig.Pig = function (game) {
     this.game = game;
+
+    this.velY = 0;
+    this.speed = 6;
     this.top = 400;
     this.left = 350;
     this.width = 90;
@@ -14,8 +17,14 @@
   };
 
   Pig.prototype.move = function () {
-    this.top += 5;
+    // this.top += 5;
     this.counter = 0;
+
+    if (this.velY < this.speed) {
+      this.velY++;
+    }
+
+    this.top += this.velY;
 
     if (this.collide() || this.isHitGround()) {
       // console.log('gameover');
@@ -24,10 +33,18 @@
 
     }
 
+    console.log(this.velY);
+
   };
 
   Pig.prototype.up = function () {
-    this.top -= 200;
+    // this.speed = 2;
+    this.velY = -15;
+
+    // this.speed = 10; // this makes it so any move is at speed of 10
+    console.log('here');
+
+    // this.top += this.velY;
     this.isUp = true;
     // console.log(this.isUp);
   }
