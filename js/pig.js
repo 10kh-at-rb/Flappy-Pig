@@ -52,7 +52,7 @@
   Pig.prototype.render = function (ctx) {
 
     console.log(this.isUp);
-    ctx.fillStyle = "rgba(0, 0, 0, 1)";
+    ctx.fillStyle = "rgba(0, 0, 0, 0)";
     ctx.fillRect(
       this.left,
       this.top,
@@ -99,6 +99,8 @@
 
   var Obstacle = FlappyPig.Obstacle = function (game, top, height) {
     this.game = game;
+    this.speed = 4;
+    this.velX = 0;
     this.fromLeft = game.xDim;
     this.fromTop = top;
     this.width = 87;
@@ -106,7 +108,12 @@
   };
 
   Obstacle.prototype.move = function () {
-    this.fromLeft -= 2;
+    if (this.velX > -this.speed) {
+      this.velX--;
+    }
+
+
+    this.fromLeft += this.velX;
   };
 
 
@@ -119,5 +126,8 @@
       this.width,
       this.height
     );
+
+    ctx.drawImage(this.game.topPipeImage, this.game.obstacles[0].fromLeft, this.game.obstacles[0].height - this.game.yDim, 87*1.6, this.game.yDim);
+    ctx.drawImage(this.game.bottomPipeImage, this.game.obstacles[1].fromLeft, this.game.obstacles[1].fromTop, 87*1.6, this.game.yDim);
   };
 })();

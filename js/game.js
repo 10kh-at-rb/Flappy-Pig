@@ -129,49 +129,14 @@
 
   Game.prototype.render = function (ctx) {
     ctx.clearRect(0, 0, this.xDim, this.yDim);
-
-
     ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
-
-    // } else if (this.interval % 9 === 0) {
-    //   ctx.drawImage(this.bgImage_9, 0, 0, this.xDim, this.yDim)
-    // } else if (this.interval % 8 === 0) {
-    //   ctx.drawImage(this.bgImage_8, 0, 0, this.xDim, this.yDim);
-    // } else if (this.interval % 7 === 0) {
-    //   ctx.drawImage(this.bgImage_7, 0, 0, this.xDim, this.yDim);
-    // } else if (this.interval % 6 === 0) {
-    //   ctx.drawImage(this.bgImage_6, 0, 0, this.xDim, this.yDim);
-    // } else if (this.interval % 5 === 0) {
-    //   ctx.drawImage(this.bgImage_5, 0, 0, this.xDim, this.yDim);
-    // } else if (this.interval % 4 === 0) {
-    //   ctx.drawImage(this.bgImage_4, 0, 0, this.xDim, this.yDim);
-    // } else if (this.interval % 3 === 0) {
-    //   ctx.drawImage(this.bgImage_3, 0, 0, this.xDim, this.yDim);
-    // } else if (this.interval % 2 === 0) {
-    //   ctx.drawImage(this.bgImage_2, 0, 0, this.xDim, this.yDim);
-    // } else if (this.interval % 1 === 0) {
-    //   ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
-    // }
-    // ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim)
-
-    // console.log(this.interval);
-    // console.log(this.xDim);
-    // if (this.interval % this.xDim === 0) {
     ctx.drawImage(this.bgImage_bar, (this.obstacles[0].fromLeft - this.xDim), 900, 2250, 28.5);
-    // }
-
 
     this.obstacles.forEach(function (obstacle) {
       obstacle.render(ctx);
-    })
+    });
 
-
-
-    ctx.drawImage(this.topPipeImage, this.obstacles[0].fromLeft, this.obstacles[0].height - this.yDim, 87*1.6, this.yDim);
-    ctx.drawImage(this.bottomPipeImage, this.obstacles[1].fromLeft, this.obstacles[1].fromTop, 87*1.6, this.yDim);
     this.pig.render(ctx);
-
-
 
     ctx.font = "100px flappy";
     ctx.fillStyle = "white";
@@ -184,9 +149,15 @@
   };
 
   Game.prototype.dead = function (ctx) {
+    ctx.clearRect(0, 0, this.xDim, this.yDim);
+    ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
+    this.obstacles.forEach(function (obstacle) {
+      obstacle.render(ctx);
+    });
+    this.pig.render(ctx);
+
     // ctx.clearRect(0, 0, this.xDim, this.yDim);
     // ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
-    this.render(ctx);
     ctx.font = "100px flappy";
     ctx.textAlign = 'center';
     ctx.fillStyle = "white";
@@ -237,22 +208,10 @@
   };
 
   Game.prototype.generateNewObstacles = function () {
-    var bottomPipeHeight =  Math.floor(Math.random()*(0.7*this.yDim - 0.1*this.yDim)) + 0.1*this.yDim; // generates random height
+    var bottomPipeHeight =  Math.floor(Math.random()*(0.7*this.yDim - 0.125*this.yDim)) + 0.125*this.yDim; // generates random height
     this.obstacleBottom = new FlappyPig.Obstacle(this, this.yDim - bottomPipeHeight, bottomPipeHeight);
-
-    var topPipeHeight = this.yDim - bottomPipeHeight -250;
-    this.obstacleTop = new FlappyPig.Obstacle(0, topPipeHeight);
-
-    return [this.obstacleTop, this.obstacleBottom];
-
-
-
-    var topPipeHeight =  Math.floor(Math.random()*(0.7*this.yDim - 0.1*this.yDim)) + 0.1*this.yDim; // generates random height
+    var topPipeHeight = this.yDim - bottomPipeHeight - 250;
     this.obstacleTop = new FlappyPig.Obstacle(this, 0, topPipeHeight);
-
-    var bottomPipeTop = topPipeHeight + 250;
-    var bottomPipeHeight = this.yDim - bottomPipeTop;
-    this.obstacleBottom = new FlappyPig.Obstacle(this,bottomPipeTop, bottomPipeHeight);
 
     return [this.obstacleTop, this.obstacleBottom];
   };
