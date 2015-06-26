@@ -14,7 +14,7 @@
   };
 
   Pig.prototype.move = function () {
-    this.top += 2;
+    this.top += 5;
     this.counter = 0;
 
     if (this.collide() || this.isHitGround()) {
@@ -27,7 +27,7 @@
   };
 
   Pig.prototype.up = function () {
-    this.top -= 80;
+    this.top -= 200;
     this.isUp = true;
     // console.log(this.isUp);
   }
@@ -89,7 +89,7 @@
   };
 
   Obstacle.prototype.move = function () {
-    this.fromLeft -= 1;
+    this.fromLeft -= 2;
   };
 
 

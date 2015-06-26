@@ -119,12 +119,12 @@
   };
 
   Game.prototype.newGame = function () {
-    this.obstacles = this.generateNewObstacles();
     this.pig = new FlappyPig.Pig(this);
     this.score = 0;
     this.gameOver = false;
     this.fired = false;
     this.interval = 0;
+    this.obstacles = this.generateNewObstacles();
   };
 
   Game.prototype.render = function (ctx) {
@@ -219,13 +219,17 @@
       obstacle.move();
     });
 
-    if ((this.obstacleTop.fromLeft + this.obstacleTop.width) === 0) {
+    if ((this.obstacleTop.fromLeft + this.obstacleTop.width) <= 0) {
       this.obstacles = this.generateNewObstacles();
-
+      this.gavePoint = false;
     }
 
-    if (this.pig.left === this.obstacleTop.fromLeft + this.obstacleTop.width) {
-      this.score += 1;
+    if (this.pig.left > this.obstacleTop.fromLeft + this.obstacleTop.width) {
+      if (!this.gavePoint) {
+
+        this.score += 1;
+        this.gavePoint = true;
+      }
       // debugger;
       console.log(this.score);
     }
@@ -257,6 +261,6 @@
         this.moveObstacles();
         this.render(ctx);
       }
-    }).bind(this), 1000/200);
+    }).bind(this), 10);
   };
 })();
