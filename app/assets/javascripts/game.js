@@ -14,16 +14,10 @@
     this.landingSpeed = 0.7;
     this.landingTop = 370;
     this.cancelKeys = false;
-    // debugger;
 
-
-
-
-    this.landingTimer = window.setInterval(function () {
+    this.timer1 = window.setInterval(function () {
       this.onLand.call(this);
     }.bind(this));
-
-
 
     $(window).keydown(function (e) {
       if (!this.cancelKeys && e.keyCode === 32) {
@@ -31,19 +25,23 @@
           this.pig.up();
         } else {
           // debugger;
-          window.clearInterval(this.landingTimer);
+          this.clearAllIntervals();
+
           this.gameOver = false;
           this.newGame();
           this.start();
           this.fired = true;
-
         }
       }
-
     }.bind(this));
 
-
   };
+
+  Game.prototype.clearAllIntervals = function () {
+    window.clearInterval(this.timer1);
+    window.clearInterval(this.timer2);
+    window.clearInterval(this.timer3);
+  }
 
   Game.prototype.onLand = function () {
     $('.your-score, .restart-game, .leaderboard-container, form.leaderboard').hide();
@@ -52,7 +50,6 @@
     ctx.clearRect(0, 0, this.xDim, this.yDim);
     ctx.drawImage(this.landingImage, 0, 0, this.xDim, this.yDim);
 
-    // var image = this.pigFlyImage;
     if (this.landingTop <= 370 && this.landingVelY < this.landingSpeed) {
       this.landingVelY += 0.7;
     }
@@ -117,6 +114,13 @@
   };
 
   Game.prototype.render = function (ctx) {
+    if (this.gameOver) {
+      this.dead(ctx);
+      this.fired = false;
+      this.clearAllIntervals();
+      return;
+    }
+
     ctx.clearRect(0, 0, this.xDim, this.yDim);
     ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
     ctx.drawImage(this.bgImage_bar, (this.obstacles[0].fromLeft - this.xDim), 900, 2250, 28.5);
@@ -134,7 +138,6 @@
     ctx.strokeStyle = "black";
     ctx.fillText(this.score, this.xDim/2, 150);
     ctx.strokeText(this.score, this.xDim/2, 150);
-
   };
 
   Game.prototype.dead = function (ctx) {
@@ -161,7 +164,6 @@
     }
 
     $('.your-score').html(score);
-
     $('.restart-game').click(function() {
 
       $.ajax({
@@ -183,17 +185,14 @@
           $('.submit-button').prop("disabled", false);
         }
       });
-
-
-
-
     }.bind(this))
 
   };
 
   Game.prototype.handleRestartSuccess = function (response) {
     this.cancelKeys = false;
-    this.landingTimer = window.setInterval(function () {
+    this.clearAllIntervals();
+    this.timer2 = window.setInterval(function () {
       this.onLand.call(this);
     }.bind(this));
 
@@ -202,7 +201,6 @@
     response.forEach(function (user, idx, res) {
 
       var score;
-
       if (String(user.score).length === 3) {
         score = "0" + String(user.score);
       } else if (String(user.score).length === 2) {
@@ -211,10 +209,11 @@
         score = "000" + String(user.score);
       }
 
-
       $('.leaderboard-name').append($('<li>').html(user.name));
       $('.leaderboard-score').append($('<li>').html(score));
     })
+
+
   };
 
   Game.prototype.movePig = function () {
@@ -253,20 +252,15 @@
   Game.prototype.start = function () {
     var ctx = this.canvas.getContext("2d");
 
-    this.timerId = window.setInterval((function () {
-      if (this.gameOver) {
-        this.dead(ctx);
-        this.fired = false;
-        window.clearInterval(this.timerId);
-        window.clearInterval(this.landingTimer);
-      } else {
-        window.clearInterval(this.landingTimer);
-        this.interval += 1;
-        this.movePig();
-        this.moveObstacles();
+    this.clearAllIntervals();
+    this.timer3 = window.setInterval(function () {
+      console.log("timer5 " + this.timer5);
+      this.interval += 1;
+      this.movePig();
+      this.moveObstacles();
+      this.render(ctx);
+    }.bind(this), 10);
 
-        this.render(ctx);
-      }
-    }).bind(this), 10);
+
   };
 })();
