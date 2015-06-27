@@ -28,7 +28,7 @@
         if (this.fired) {
 
           this.pig.up();
-          console.log('fired is true')
+          // console.log('fired is true')
         } else {
           window.clearInterval(this.landingTimer);
           this.gameOver = false;
@@ -38,8 +38,8 @@
 
           this.start();
           this.fired = true;
-          console.log('start game');
-          console.log(this.fired);
+          // console.log('start game');
+          // console.log(this.fired);
         }
       }
 

@@ -175,7 +175,6 @@
         },
         success: function (response) {
           this.handleRestartSuccess(response);
-          console.log("successful");
           $('.errors').html("");
           $('.leaderboard').hide();
           handleSuccess(response);
