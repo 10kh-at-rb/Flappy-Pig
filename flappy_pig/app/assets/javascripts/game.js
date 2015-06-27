@@ -50,7 +50,7 @@
   };
 
   Game.prototype.onLand = function () {
-    $('.your-score, .restart-game, .add-your-score, .leaderboard-container').hide();
+    $('.your-score, .restart-game, .leaderboard-container, form.leaderboard').hide();
     this.landingInterval += 1;
     var ctx = this.canvas.getContext("2d");
     ctx.clearRect(0, 0, this.xDim, this.yDim);
@@ -143,8 +143,8 @@
 
   Game.prototype.dead = function (ctx) {
     this.cancelKeys = true;
-    $('.your-score, .restart-game, .leaderboard-container').show();
-    
+    $('.your-score, .restart-game, .leaderboard-container, form.leaderboard').show();
+
     ctx.clearRect(0, 0, this.xDim, this.yDim);
     ctx.drawImage(this.gameoverImage, 0, 0, this.xDim, this.yDim);
 

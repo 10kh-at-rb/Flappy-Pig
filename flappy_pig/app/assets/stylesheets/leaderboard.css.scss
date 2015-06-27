@@ -9,7 +9,7 @@
 .your-score {
   position: absolute;
   top: 419px;
-  left: 230px;
+  left: 227px;
 }
 
 .add-your-score {
@@ -65,7 +65,7 @@
 form.leaderboard {
   input {
     font: 13px 'Silk';
-    color: #FF0000;
+    color: #FFF;
     text-shadow: 0px 1px #d4a559;
     line-height: 15.1px;
     -webkit-font-smoothing: none;
@@ -83,10 +83,10 @@ form.leaderboard {
       padding: 0px 5px;
       background-color: transparent;
 
-      &::-webkit-input-placeholder { color: #fff; }
-      &:-moz-placeholder { color: #fff; }
-      &::-moz-placeholder { color: #fff; }
-      &:-ms-input-placeholder { color: #fff; }
+      &::-webkit-input-placeholder { color: #e86101; text-shadow: 0px 0px #fff;}
+      &:-moz-placeholder { color: #e86101; text-shadow: 0px 0px #fff;}
+      &::-moz-placeholder { color: #e86101; text-shadow: 0px 0px #fff;}
+      &:-ms-input-placeholder { color: #e86101; text-shadow: 0px 0px #fff;}
     }
 
     &.submit-button {
