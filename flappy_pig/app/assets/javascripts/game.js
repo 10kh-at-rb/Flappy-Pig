@@ -170,10 +170,51 @@
       this.landingTimer = window.setInterval(function () {
         this.onLand.call(this);
       }.bind(this));
+
+      $.ajax({
+        type: "GET",
+        url: "/",
+        dataType: "json",
+        data: {
+          "query": true
+        },
+        success: function (response) {
+          this.handleRestartSuccess(response);
+          console.log("successful");
+          $('.errors').html("");
+          $('.leaderboard').hide();
+          handleSuccess(response);
+        }.bind(this),
+        error: function (response) {
+          $('.errors').html(response.responseJSON[0]);
+          $('.submit-button').prop("disabled", false);
+        }
+      });
+
       this.cancelKeys = false;
     }.bind(this))
 
-  }
+  };
+
+  Game.prototype.handleRestartSuccess = function (response) {
+    $('.leaderboard-name, .leaderboard-score').html("");
+    response.forEach(function (user, idx, res) {
+
+      var score;
+
+      if (String(user.score).length === 3) {
+        score = "0" + String(user.score);
+      } else if (String(user.score).length === 2) {
+        score = "00" + String(user.score);
+      } else if (String(user.score).length === 1) {
+        score = "000" + String(user.score);
+      }
+
+
+      $('.leaderboard-name').append($('<li>').html(user.name));
+      $('.leaderboard-score').append($('<li>').html(score));
+    })
+  };
 
   Game.prototype.movePig = function () {
     var game = this;
