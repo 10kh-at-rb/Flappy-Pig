@@ -14,7 +14,7 @@
     this.landingSpeed = 0.7;
     this.landingTop = 370;
     this.cancelKeys = false;
-    debugger;
+    // debugger;
 
 
 
@@ -30,7 +30,7 @@
         if (this.fired) {
           this.pig.up();
         } else {
-          debugger;
+          // debugger;
           window.clearInterval(this.landingTimer);
           this.gameOver = false;
           this.newGame();
@@ -163,9 +163,6 @@
     $('.your-score').html(score);
 
     $('.restart-game').click(function() {
-      this.landingTimer = window.setInterval(function () {
-        this.onLand.call(this);
-      }.bind(this));
 
       $.ajax({
         type: "GET",
@@ -187,12 +184,19 @@
         }
       });
 
-      this.cancelKeys = false;
+
+
+
     }.bind(this))
 
   };
 
   Game.prototype.handleRestartSuccess = function (response) {
+    this.cancelKeys = false;
+    this.landingTimer = window.setInterval(function () {
+      this.onLand.call(this);
+    }.bind(this));
+
     $('#leaderboard-name').val("");
     $('.leaderboard-name, .leaderboard-score').html("");
     response.forEach(function (user, idx, res) {
@@ -260,6 +264,7 @@
         this.interval += 1;
         this.movePig();
         this.moveObstacles();
+
         this.render(ctx);
       }
     }).bind(this), 10);
