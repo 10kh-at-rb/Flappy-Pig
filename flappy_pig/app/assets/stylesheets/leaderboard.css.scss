@@ -1,3 +1,12 @@
+.errors {
+  position: absolute;
+  top: 369px;
+  left: 173px;
+  z-index: 1;
+  font: 12px 'Silk';
+  color: #ff0000;
+  -webkit-font-smoothing: none;
+}
 .leaderboard-container, .your-score {
   font: 13px 'Silk';
   color: #fff;

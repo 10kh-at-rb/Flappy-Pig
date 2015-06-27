@@ -27,8 +27,13 @@
       data: formData,
       success: function (response) {
         console.log("successful");
+        $('.errors').html("");
         $('.leaderboard').hide();
         handleSuccess(response);
+      },
+      error: function (response) {
+        $('.errors').html(response.responseJSON[0]);
+        $('.submit-button').prop("disabled", false);
       }
     })
   })
