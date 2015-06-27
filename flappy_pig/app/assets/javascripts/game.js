@@ -14,7 +14,6 @@
     this.landingSpeed = 0.7;
     this.landingTop = 370;
     this.cancelKeys = false;
-    debugger;
 
 
 
@@ -30,7 +29,7 @@
         if (this.fired) {
           this.pig.up();
         } else {
-          debugger;
+          // debugger;
           window.clearInterval(this.landingTimer);
           this.gameOver = false;
           this.newGame();
