@@ -16,6 +16,32 @@
   left: 230px;
 }
 
+.add-your-score {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 422px;
+  left: 290px;
+  background-image: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/add_button_raised.gif');
+  background-size: 35px;
+  &:hover {
+    background-image: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/add_button_pressed.gif');
+  }
+}
+
+.restart-game {
+  width: 119px;
+  height: 39px;
+  position: absolute;
+  top: 480px;
+  left: 184px;
+  background-image: url("https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/button_restart_raised.gif");
+  background-size: 119px;
+  &:hover {
+    background-image: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/button_restart_pressed.gif');
+  }
+}
+
 .leaderboard-container {
   ul.leaderboard-name {
     list-style-type: none;
