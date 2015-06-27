@@ -1,0 +1,19 @@
+# Logfile created on 2015-06-27 00:04:52 -0700 by logger.rb/44203
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : Starting the New Relic agent in "development" environment.
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] WARN : No configuration file found. Working directory = /Users/karenling/Desktop/flappy_pig_canvas/flappy_pig
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] WARN : Looked in these locations (based on defaults): /Users/karenling/Desktop/flappy_pig_canvas/flappy_pig/config/newrelic.yml, /Users/karenling/Desktop/flappy_pig_canvas/flappy_pig/newrelic.yml, /Users/karenling/Desktop/flappy_pig_canvas/config/newrelic.yml, /Users/karenling/Desktop/flappy_pig_canvas/newrelic.yml, /Users/karenling/.newrelic/newrelic.yml, /Users/karenling/newrelic.yml
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : Environment: development
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : No known dispatcher detected.
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : Application: development
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : Installing ActiveJob instrumentation
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : Installing ActiveRecord 4 instrumentation
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : Installing Net instrumentation
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : Installing deferred Rack instrumentation
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : Installing Rack::Builder middleware instrumentation
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : Installing Rails 3+ middleware instrumentation
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : Installing Rails 4 Controller instrumentation
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : Installing Rails 4 view instrumentation
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : Installing Rails 4 Error instrumentation
+[06/27/15 00:04:52 -0700 Karens-MBP.hsd1.ca.comcast.net (56233)] INFO : Finished instrumentation
