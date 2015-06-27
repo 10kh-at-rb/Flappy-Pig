@@ -197,6 +197,7 @@
   };
 
   Game.prototype.handleRestartSuccess = function (response) {
+    $('#leaderboard-name').val("");
     $('.leaderboard-name, .leaderboard-score').html("");
     response.forEach(function (user, idx, res) {
 
