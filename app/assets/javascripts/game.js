@@ -15,6 +15,11 @@
     this.landingTop = 370;
     this.cancelKeys = false;
 
+
+    this.barVelX = 0;
+    this.barSpeed = 4;
+    this.barLeft = 0;
+
     this.timer1 = window.setInterval(function () {
       this.onLand.call(this);
     }.bind(this));
@@ -24,7 +29,6 @@
         if (this.fired) {
           this.pig.up();
         } else {
-          // debugger;
           this.clearAllIntervals();
 
           this.gameOver = false;
@@ -123,7 +127,16 @@
 
     ctx.clearRect(0, 0, this.xDim, this.yDim);
     ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
-    ctx.drawImage(this.bgImage_bar, (this.obstacles[0].fromLeft - this.xDim), 900, 2250, 28.5);
+
+
+    this.barVelX = 0;
+    this.barSpeed = 900;
+
+    if (this.barVelX > -this.barSpeed) {
+      this.barVelX--;
+    }
+    this.barLeft += this.barVelX;
+    ctx.drawImage(this.bgImage_bar, (this.barLeft), 900, 2250, 28.5);
 
     this.obstacles.forEach(function (obstacle) {
       obstacle.render(ctx);
@@ -175,7 +188,6 @@
         },
         success: function (response) {
           this.handleRestartSuccess(response);
-          // console./log("successful");
           $('.errors').html("");
           $('.leaderboard').hide();
           handleSuccess(response);
@@ -211,9 +223,7 @@
 
       $('.leaderboard-name').append($('<li>').html(user.name));
       $('.leaderboard-score').append($('<li>').html(score));
-    })
-
-
+    });
   };
 
   Game.prototype.movePig = function () {
@@ -259,7 +269,5 @@
       this.moveObstacles();
       this.render(ctx);
     }.bind(this), 10);
-
-
   };
 })();
