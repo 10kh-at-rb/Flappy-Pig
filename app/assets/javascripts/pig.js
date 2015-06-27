@@ -49,10 +49,6 @@
       this.height
     );
 
-    //
-
-
-
     if (this.velY === this.speed) {
       this.countIntervalsBeforeGoingDown ++;
     }
@@ -69,21 +65,6 @@
     } else if (this.velY > 0) {
       ctx.drawImage(this.game.pigFlyImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
     }
-
-
-
-
-    // if (this.isUp) {
-    //   if (this.game.interval % 6 === 0 || this.game.interval % 7 === 0 || this.game.interval % 8 === 0 || this.game.interval % 9 === 0 || this.game.interval % 10 === 0) {
-    //
-    //   } else {
-    //
-    //   }
-    //
-    // } else if (!this.isUp) {
-    //   // debugger;
-    //   ctx.drawImage(this.game.pigFallImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
-    // }
 
   };
 
