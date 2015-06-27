@@ -27,17 +27,12 @@
     $(window).keydown(function (e) {
       if (!this.cancelKeys && e.keyCode === 32) {
         if (this.fired) {
-          console.log('fired');
           this.pig.up();
-          console.log('fired is true')
         } else {
+          debugger;
           window.clearInterval(this.landingTimer);
-          console.log('not fired');
           this.gameOver = false;
-
           this.newGame();
-
-
           this.start();
           this.fired = true;
 
@@ -258,6 +253,7 @@
         this.dead(ctx);
         this.fired = false;
         window.clearInterval(this.timerId);
+        window.clearInterval(this.landingTimer);
       } else {
         window.clearInterval(this.landingTimer);
         this.interval += 1;
