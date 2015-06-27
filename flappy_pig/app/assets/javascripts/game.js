@@ -191,7 +191,9 @@
     } else if (String(this.score).length === 1) {
       score = "000" + String(this.score);
     }
-    ctx.fillText(score, this.xDim/2, 685);
+
+    $('.your-score').html(score);
+    // ctx.fillText(score, this.xDim/2, 685);
 
     // ctx.drawImage(this.leaderBoardImage, 132, 400, 504, 475);
 

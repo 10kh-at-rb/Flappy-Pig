@@ -1,4 +1,5 @@
-.leaderboard-container {
+
+.leaderboard-container, .your-score {
   font: 13px 'Silk';
   color: #fff;
   text-shadow: 0px 1px #d4a559;
@@ -7,6 +8,15 @@
   top: 188px;
   left: 160px;
   -webkit-font-smoothing: none;
+}
+
+.your-score {
+  position: absolute;
+  top: 419px;
+  left: 230px;
+}
+
+.leaderboard-container {
   ul.leaderboard-name {
     list-style-type: none;
     float: left;

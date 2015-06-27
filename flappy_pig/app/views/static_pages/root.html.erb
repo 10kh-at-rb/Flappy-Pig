@@ -36,11 +36,15 @@
     </ul>
     <ul class="leaderboard-score">
       <% @users_scores.each do |user| %>
-        <li><%= user.score %></li>
+        <li><%= (user.score.to_s).rjust(4, '0')  %></li>
       <% end %>
     </ul>
   </div>
+
+  <div class="your-score"></div>
 </div>
+
+
 
 <script type="text/javascript">
 
