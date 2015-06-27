@@ -22,24 +22,26 @@
 
 <div class="container">
   <canvas class="flappy-view"></canvas>
+
+
+  <%= render "leaderboard_form" %>
+
+
+
+  <div class="leaderboard-container">
+    <ul class="leaderboard-name">
+      <% @users_scores.each do |user| %>
+        <li><%= user.name %></li>
+      <% end %>
+    </ul>
+    <ul class="leaderboard-score">
+      <% @users_scores.each do |user| %>
+        <li><%= user.score %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
-<%= render "leaderboard_form" %>
-
-
-
-<div class="leaderboard-container">
-  <ul class="leaderboard-name">
-    <% @users_scores.each do |user| %>
-      <li><%= user.name %></li>
-    <% end %>
-  </ul>
-  <ul class="leaderboard-score">
-    <% @users_scores.each do |user| %>
-      <li><%= user.score %></li>
-    <% end %>
-  </ul>
-</div>
 <script type="text/javascript">
 
 

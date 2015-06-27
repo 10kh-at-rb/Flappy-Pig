@@ -19,7 +19,7 @@
 
     this.landingTimer = window.setInterval(function () {
       this.onLand.call(this);
-    }.bind(this));
+    }.bind(this), 10);
 
 
     // this.onLand();
@@ -56,6 +56,7 @@
   };
 
   Game.prototype.onLand = function () {
+
     this.landingInterval += 1;
     var ctx = this.canvas.getContext("2d");
     ctx.clearRect(0, 0, this.xDim, this.yDim);
@@ -181,7 +182,7 @@
     ctx.fillText(this.score, this.xDim/2, 330);
     ctx.strokeText(this.score, this.xDim/2, 330);
 
-    ctx.drawImage(this.leaderBoardImage, 80, 400, 607, 475);
+    ctx.drawImage(this.leaderBoardImage, 80, 400, 504, 475);
 
 
     ctx.font = "30px Silk";

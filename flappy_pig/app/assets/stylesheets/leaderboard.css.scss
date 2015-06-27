@@ -1,17 +1,45 @@
 .leaderboard-container {
-  font: 16px 'Silk';
-  color: #e86101;
-  text-shadow: 0px 2px #f0eaa1;
-  line-height: 30px;
+  font: 13px 'Silk';
+  color: #fff;
+  text-shadow: 0px 1px #d4a559;
+  line-height: 15.1px;
   position: absolute;
-  top: 335px;
-  left: 91px;
+  top: 188px;
+  left: 160px;
+  -webkit-font-smoothing: none;
   ul.leaderboard-name {
     list-style-type: none;
     float: left;
+    padding: 0;
+    width: 110px;
+    overflow: hidden;
   }
   ul.leaderboard-score {
     list-style-type: none;
     float: left;
+    padding: 0;
+    margin-left: 12px;
+    width: 45px;
+    text-align: right;
   }
+}
+
+form.leaderboard {
+  input {
+    font: 16px 'Silk';
+    border: 0;
+
+    &:focus {
+      outline: 0;
+    }
+    &#leaderboard-name {
+      position: absolute;
+      top: 504px;
+      left: 120px;
+      width: 160px;
+      padding: 0px 15px;
+      background-color: transparent;
+    }
+  }
+
 }

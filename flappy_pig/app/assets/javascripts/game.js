@@ -123,6 +123,9 @@
 
     this.leaderBoardImage = new Image();
     this.leaderBoardImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/leaderboard.gif";
+
+    this.gameoverImage = new Image();
+    this.gameoverImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_gameover.gif";
   };
 
   Game.prototype.newGame = function () {
@@ -157,31 +160,40 @@
 
   Game.prototype.dead = function (ctx) {
     ctx.clearRect(0, 0, this.xDim, this.yDim);
-    ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
-    this.obstacles.forEach(function (obstacle) {
-      obstacle.render(ctx);
-    });
-    this.pig.render(ctx);
+    ctx.drawImage(this.gameoverImage, 0, 0, this.xDim, this.yDim);
+    // this.obstacles.forEach(function (obstacle) {
+    //   obstacle.render(ctx);
+    // });
+    // this.pig.render(ctx);
 
-    ctx.font = "100px flappy";
+    // ctx.font = "100px flappy";
+    // ctx.textAlign = 'center';
+    // ctx.fillStyle = "white";
+    // ctx.lineWidth = 4;
+    // ctx.strokeStyle = "black";
+    // ctx.fillText("GAMEOVER", this.xDim/2, 150);
+    // ctx.strokeText("GAMEOVER", this.xDim/2, 150);
+
+    // ctx.drawImage(this.scoreBoardImage, 290, 200, 185, 165);
+
+    $('#leaderboard-score').val(this.score);
+
+    ctx.font = "24px Silk";
     ctx.textAlign = 'center';
     ctx.fillStyle = "white";
-    ctx.lineWidth = 4;
-    ctx.strokeStyle = "black";
-    ctx.fillText("GAMEOVER", this.xDim/2, 150);
-    ctx.strokeText("GAMEOVER", this.xDim/2, 150);
 
-    ctx.drawImage(this.scoreBoardImage, 290, 200, 185, 165);
+    var score;
 
-    ctx.font = "60px flappy";
-    ctx.textAlign = 'center';
-    ctx.fillStyle = "white";
-    ctx.lineWidth = 4;
-    ctx.strokeStyle = "black";
-    ctx.fillText(this.score, this.xDim/2, 330);
-    ctx.strokeText(this.score, this.xDim/2, 330);
+    if (String(this.score).length === 3) {
+      score = "0" + String(this.score);
+    } else if (String(this.score).length === 2) {
+      score = "00" + String(this.score);
+    } else if (String(this.score).length === 1) {
+      score = "000" + String(this.score);
+    }
+    ctx.fillText(score, this.xDim/2, 685);
 
-    ctx.drawImage(this.leaderBoardImage, 80, 400, 607, 475);
+    // ctx.drawImage(this.leaderBoardImage, 132, 400, 504, 475);
 
 
     // ctx.font = "30px Silk";

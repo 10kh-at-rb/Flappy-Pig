@@ -2,8 +2,8 @@
 
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <input type="text" name="leaderboard[name]" placeholder="Add your name!">
-  <input type="text" name="leaderboard[score]">
+  <input type="text" name="leaderboard[name]" id="leaderboard-name" placeholder="Add your name!">
+  <input type="hidden" name="leaderboard[score]" id="leaderboard-score">
 
   <input type="Submit" class="submit-button">
 </form>

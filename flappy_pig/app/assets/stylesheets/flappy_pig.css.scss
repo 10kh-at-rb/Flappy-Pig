@@ -54,15 +54,17 @@
 .container {
   width: 480px;
   height: 640px;
+  position: relative;
+  margin: auto auto;
 }
 
 .flappy-view {
+
   border: 3px solid #543646;
-  display: inline-block;
+  display: block;
   width: 100%;
   position: relative;
-  top: -10px;
-  left: -10px;
+
 }
 
 .row {
