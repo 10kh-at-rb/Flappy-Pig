@@ -37,6 +37,18 @@
     $('.submit-button').prop("disabled", false);
 
     $('.leaderboard-name').append($('<li>').html(response.name));
-    $('.leaderboard-score').append($('<li>').html(response.score));
+
+
+    var score;
+
+    if (String(response.score).length === 3) {
+      score = "0" + String(response.score);
+    } else if (String(response.score).length === 2) {
+      score = "00" + String(response.score);
+    } else if (String(response.score).length === 1) {
+      score = "000" + String(response.score);
+    }
+
+    $('.leaderboard-score').append($('<li>').html(score));
   };
 </script>
