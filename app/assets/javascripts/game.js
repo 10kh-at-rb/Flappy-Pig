@@ -254,7 +254,6 @@
 
     this.clearAllIntervals();
     this.timer3 = window.setInterval(function () {
-      console.log("timer5 " + this.timer5);
       this.interval += 1;
       this.movePig();
       this.moveObstacles();
