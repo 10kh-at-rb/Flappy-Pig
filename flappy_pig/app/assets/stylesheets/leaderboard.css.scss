@@ -1,12 +1,8 @@
-
 .leaderboard-container, .your-score {
   font: 13px 'Silk';
   color: #fff;
   text-shadow: 0px 1px #d4a559;
   line-height: 15.1px;
-  position: absolute;
-  top: 188px;
-  left: 160px;
   -webkit-font-smoothing: none;
 }
 
@@ -17,6 +13,7 @@
 }
 
 .add-your-score {
+  display: none;
   width: 35px;
   height: 35px;
   position: absolute;
@@ -43,6 +40,9 @@
 }
 
 .leaderboard-container {
+  position: absolute;
+  top: 188px;
+  left: 160px;
   ul.leaderboard-name {
     list-style-type: none;
     float: left;
@@ -62,7 +62,12 @@
 
 form.leaderboard {
   input {
-    font: 16px 'Silk';
+    font: 13px 'Silk';
+    color: #FF0000;
+    text-shadow: 0px 1px #d4a559;
+    line-height: 15.1px;
+    -webkit-font-smoothing: none;
+    text-align: center;
     border: 0;
 
     &:focus {
@@ -70,11 +75,31 @@ form.leaderboard {
     }
     &#leaderboard-name {
       position: absolute;
-      top: 504px;
-      left: 120px;
-      width: 160px;
-      padding: 0px 15px;
+      top: 352px;
+      left: 145px;
+      width: 187px;
+      padding: 0px 5px;
       background-color: transparent;
+
+      &::-webkit-input-placeholder { color: #fff; }
+      &:-moz-placeholder { color: #fff; }
+      &::-moz-placeholder { color: #fff; }
+      &:-ms-input-placeholder { color: #fff; }
+    }
+
+    &.submit-button {
+      display: none;
+      width: 35px;
+      height: 35px;
+      position: absolute;
+      top: 422px;
+      left: 290px;
+      background-color: transparent;
+      background-image: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/add_button_raised.gif');
+      background-size: 35px;
+      &:hover {
+        background-image: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/add_button_pressed.gif');
+      }
     }
   }
 

@@ -2,14 +2,19 @@
 
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <input type="text" name="leaderboard[name]" id="leaderboard-name" placeholder="Add your name!">
+  <input type="text" name="leaderboard[name]" id="leaderboard-name" placeholder="Click to add your name!">
   <input type="hidden" name="leaderboard[score]" id="leaderboard-score">
 
-  <input type="Submit" class="submit-button">
+  <input type="Submit" class="submit-button" value="">
 </form>
 
 
 <script type="text/javascript">
+
+  $('#leaderboard-name').click(function () {
+    $('.submit-button').show();
+  });
+
   $('.leaderboard').on('submit', function(event) {
     event.preventDefault();
     $('.submit-button').prop('disabled', true);
@@ -22,6 +27,7 @@
       data: formData,
       success: function (response) {
         console.log("successful");
+        $('.leaderboard').hide();
         handleSuccess(response);
       }
     })

@@ -13,6 +13,7 @@
     this.landingVelY = 0;
     this.landingSpeed = 0.7;
     this.landingTop = 370;
+    this.cancelKeys = false;
 
 
 
@@ -22,15 +23,16 @@
     }.bind(this));
 
 
-    // this.onLand();
-    $(window).keydown(function (e) {
-      if (e.keyCode === 32) {
-        if (this.fired) {
 
+    $(window).keydown(function (e) {
+      if (!this.cancelKeys && e.keyCode === 32) {
+        if (this.fired) {
+          console.log('fired');
           this.pig.up();
           console.log('fired is true')
         } else {
           window.clearInterval(this.landingTimer);
+          console.log('not fired');
           this.gameOver = false;
 
           this.newGame();
@@ -38,24 +40,17 @@
 
           this.start();
           this.fired = true;
-          console.log('start game');
-          console.log(this.fired);
+
         }
       }
 
     }.bind(this));
 
-// var ctx = this.canvas.getContext("2d");
-
-
-// (this.pigFlyDownImage).onload = function () {
-//   ctx.drawImage(this.pigFlyDownImage, this.pig.left - 15, this.landingTop, this.pig.width + 30, this.pig.height + 30);
-// }.bind(this)
-// ctx.drawImage(this.pigFlyImage, this.pig.left - 15, this.landingTop, this.pig.width + 30, this.pig.height + 30);
 
   };
 
   Game.prototype.onLand = function () {
+    $('.your-score, .restart-game, .add-your-score, .leaderboard-container').hide();
     this.landingInterval += 1;
     var ctx = this.canvas.getContext("2d");
     ctx.clearRect(0, 0, this.xDim, this.yDim);
@@ -75,18 +70,6 @@
     } else if (this.landingVelY < 0) {
       ctx.drawImage(this.pigFlyDownImage, this.pig.left - 15, this.landingTop, this.pig.width + 30, this.pig.height + 30);
     }
-
-
-  //   setTimeout(function () {
-  //
-  //   ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
-  // }.bind(this), 5000);
-
-
-
-
-
-
   }
 
   Game.prototype.images = function () {
@@ -159,22 +142,11 @@
   };
 
   Game.prototype.dead = function (ctx) {
+    this.cancelKeys = true;
+    $('.your-score, .restart-game, .leaderboard-container').show();
+    
     ctx.clearRect(0, 0, this.xDim, this.yDim);
     ctx.drawImage(this.gameoverImage, 0, 0, this.xDim, this.yDim);
-    // this.obstacles.forEach(function (obstacle) {
-    //   obstacle.render(ctx);
-    // });
-    // this.pig.render(ctx);
-
-    // ctx.font = "100px flappy";
-    // ctx.textAlign = 'center';
-    // ctx.fillStyle = "white";
-    // ctx.lineWidth = 4;
-    // ctx.strokeStyle = "black";
-    // ctx.fillText("GAMEOVER", this.xDim/2, 150);
-    // ctx.strokeText("GAMEOVER", this.xDim/2, 150);
-
-    // ctx.drawImage(this.scoreBoardImage, 290, 200, 185, 165);
 
     $('#leaderboard-score').val(this.score);
 
@@ -193,42 +165,13 @@
     }
 
     $('.your-score').html(score);
-    // ctx.fillText(score, this.xDim/2, 685);
 
-    // ctx.drawImage(this.leaderBoardImage, 132, 400, 504, 475);
-
-
-    // ctx.font = "30px Silk";
-    //
-    //
-    // ctx.fillStyle = "#f0eaa1";
-    // ctx.textAlign = 'left';
-    // ctx.fillText("Karen", 180, 593);
-    // ctx.fillText("Jane", 180, 643);
-    // ctx.fillText("Jerry", 180, 693);
-    // ctx.fillText("John", 180, 743);
-    //
-    // ctx.textAlign = 'right';
-    // ctx.fillText("100", 580, 593);
-    // ctx.fillText("99", 580, 643);
-    // ctx.fillText("94", 580, 693);
-    // ctx.fillText("10", 580, 743);
-    //
-    // // left first
-    // ctx.fillStyle = "#e86101";
-    // ctx.textAlign = 'left';
-    // ctx.fillText("Karen", 180, 590);
-    // ctx.fillText("Jane", 180, 640);
-    // ctx.fillText("Jerry", 180, 690);
-    // ctx.fillText("John", 180, 740);
-    //
-    // ctx.textAlign = 'right';
-    // ctx.fillText("100", 580, 590);
-    // ctx.fillText("99", 580, 640);
-    // ctx.fillText("94", 580, 690);
-    // ctx.fillText("10", 580, 740);
-    // bg
-
+    $('.restart-game').click(function() {
+      this.landingTimer = window.setInterval(function () {
+        this.onLand.call(this);
+      }.bind(this));
+      this.cancelKeys = false;
+    }.bind(this))
 
   }
 
@@ -270,11 +213,11 @@
 
     this.timerId = window.setInterval((function () {
       if (this.gameOver) {
-        ctx.clearRect(0, 0, this.xDim, this.yDim);
         this.dead(ctx);
         this.fired = false;
         window.clearInterval(this.timerId);
       } else {
+        window.clearInterval(this.landingTimer);
         this.interval += 1;
         this.movePig();
         this.moveObstacles();
