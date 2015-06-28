@@ -72,16 +72,14 @@
 
 
   Pig.prototype.collide = function () {
-    // if the pig enters the pipe area
-    if (
+    if ( // the pig is within the pipe gap
         // if the right side of the pig is greater than the obstacle's left
         ((this.left + this.width) >= this.game.obstacles[0].fromLeft) &&
         // the left side of the pig is less than the right side of the obstacle
         (this.left <= this.game.obstacles[0].fromLeft + this.game.obstacles[0].width)
-        // (this.game.obstacles[0].fromLeft + this.game.obstacles[0].width <= this.left)
         ) {
       if (this.game.obstacleTop.height < this.top && this.game.obstacleBottom.fromTop > this.top+this.height) {
-        // return true
+        // pig is in the pipe gap
       } else {
       // find the empty area
         return true;
@@ -95,8 +93,6 @@
 
   var Obstacle = FlappyPig.Obstacle = function (game, top, height) {
     this.game = game;
-    // this.speed = 4;
-    // this.velX = 0;
     this.fromLeft = game.xDim;
     this.fromTop = top;
     this.width = 87;
@@ -105,10 +101,6 @@
 
   Obstacle.prototype.move = function () {
     this.fromLeft -= 4;
-    // if (this.velX > -this.speed) {
-    //   this.velX--;
-    // }
-    // this.fromLeft += this.velX;
   };
 
   Obstacle.prototype.render = function (ctx) {
@@ -120,14 +112,14 @@
       this.height
     );
 
-    // ctx.drawImage(this.game.pigSpriteImage, 601, 0, 150, 150, this.left - 30, this.top - 35, 150, 150);
+    // sprite arguments
     // left position of sprite,
     // top post of sprite
     // actual width of sprite
     // height of sprite
     // left pos on canvas
     // top pos on canvas
-    // width of sprite (will compress the sprite) (this is teh width you want your sprite to stretch/compress to)
+    // width of sprite (this is the width you want your sprite to stretch/compress to)
     // height of sprite
 
     ctx.drawImage(this.game.topPipeImage, this.game.obstacles[0].fromLeft, this.game.obstacles[0].height - this.game.yDim, 87*1.6, this.game.yDim);
