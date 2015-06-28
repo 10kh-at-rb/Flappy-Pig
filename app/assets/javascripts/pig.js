@@ -12,7 +12,6 @@
     this.left = 350;
     this.width = 90;
     this.height = 65;
-    this.isUp = false;
     this.countIntervalsBeforeGoingDown = 0;
     this.color = "pink";
   };
@@ -33,14 +32,10 @@
 
   Pig.prototype.up = function () {
     this.velY = -17;
-
-    this.isUp = true;
     this.countIntervalsBeforeGoingDown = 0;
   }
 
   Pig.prototype.render = function (ctx) {
-
-    // console.log(this.isUp);
     ctx.fillStyle = "rgba(0, 0, 0, 0)";
     ctx.fillRect(
       this.left,
@@ -50,12 +45,11 @@
     );
 
     if (this.game.gameOver) {
-      console.log('gameover');
       if (!this.isHitGround()) {
-        ctx.drawImage(this.game.pigSpriteImage, 750, 0, 150, 150, this.left - 15, this.top - 15, 150, 150);
+        ctx.drawImage(this.game.pigSpriteImage, 750, 0, 150, 150, this.left - 30, this.top - 35, 150, 150);
       } else {
         this.game.okayToDisplayLeaderBoard = true;
-        ctx.drawImage(this.game.pigSpriteImage, 750, 0, 150, 150, this.left - 15, this.game.yDim - this.game.yDim * 0.225, 150, 150);
+        ctx.drawImage(this.game.pigSpriteImage, 750, 0, 150, 150, this.left - 30, this.game.yDim - this.game.yDim * 0.225, 150, 150);
       }
       return;
     }
@@ -63,30 +57,17 @@
     if (this.velY === this.speed) {
       this.countIntervalsBeforeGoingDown ++;
     }
-    // ctx.drawImage(this.pigSpriteImage, 151, 0, 150, 150, this.pig.left - 15, this.landingTop, 150, 150);
 
     if (this.countIntervalsBeforeGoingDown > 20 && this.velY > 0 && this.velY === this.speed) {
-      ctx.drawImage(this.game.pigSpriteImage, 601, 0, 150, 150, this.left - 15, this.top - 15, 150, 150);
+      ctx.drawImage(this.game.pigSpriteImage, 601, 0, 150, 150, this.left - 30, this.top - 35, 150, 150);
       return;
     }
 
     if (this.velY <= 0 ) {
-      ctx.drawImage(this.game.pigSpriteImage, 449, 0, 150, 150, this.left - 15, this.top - 15, 150, 150);
+      ctx.drawImage(this.game.pigSpriteImage, 449, 0, 150, 150, this.left - 30, this.top - 35, 150, 150);
     } else if (this.velY > 0) {
-      ctx.drawImage(this.game.pigSpriteImage, 299, 0, 150, 150, this.left - 15, this.top - 15, 150, 150);
+      ctx.drawImage(this.game.pigSpriteImage, 299, 0, 150, 150, this.left - 30, this.top - 35, 150, 150);
     }
-
-    // if (this.countIntervalsBeforeGoingDown > 20 && this.velY > 0 && this.velY === this.speed) {
-    //   ctx.drawImage(this.game.pigFallImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
-    //   return;
-    // }
-    //
-    // if (this.velY < 0 ) {
-    //   ctx.drawImage(this.game.pigFlyDownImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
-    // } else if (this.velY > 0) {
-    //   ctx.drawImage(this.game.pigFlyImage, this.left - 15, this.top - 15, this.width + 30, this.height + 30);
-    // }
-
   };
 
 
