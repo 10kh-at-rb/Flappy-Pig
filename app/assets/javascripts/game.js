@@ -20,6 +20,8 @@
     this.barSpeed = 4;
     this.barLeft = 0;
 
+    // this.okayToDisplayLeaderBoard = false;
+
     this.timer1 = window.setInterval(function () {
       this.onLand.call(this);
     }.bind(this));
@@ -45,6 +47,7 @@
     window.clearInterval(this.timer1);
     window.clearInterval(this.timer2);
     window.clearInterval(this.timer3);
+    window.clearInterval(this.timer4);
   }
 
   Game.prototype.onLand = function () {
@@ -129,9 +132,9 @@
 
   Game.prototype.render = function (ctx) {
     if (this.gameOver) {
+      this.clearAllIntervals();
       this.dead(ctx);
       this.fired = false;
-      this.clearAllIntervals();
       return;
     }
 
@@ -165,10 +168,35 @@
 
   Game.prototype.dead = function (ctx) {
     this.cancelKeys = true;
+
+
+    this.timer4 = window.setInterval(function () {
+      ctx.clearRect(0, 0, this.xDim, this.yDim);
+
+      ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
+
+      this.obstacles.forEach(function (obstacle) {
+        obstacle.render(ctx);
+      });
+
+      this.movePig();
+      this.pig.render(ctx);
+
+      if (this.okayToDisplayLeaderBoard) {
+        this.displayLeaderboard(ctx);
+      }
+    }.bind(this), 10);
+
+
+
+
+  };
+
+  Game.prototype.displayLeaderboard = function (ctx) {
+    this.clearAllIntervals();
     $('.your-score, .restart-game, .leaderboard-container, form.leaderboard').show();
 
-    ctx.clearRect(0, 0, this.xDim, this.yDim);
-    ctx.drawImage(this.gameoverImage, 0, 0, this.xDim, this.yDim);
+    ctx.drawImage(this.leaderBoardImage, 204, 49, 361, 611);
 
     $('#leaderboard-score').val(this.score);
 
@@ -208,10 +236,10 @@
         }
       });
     }.bind(this))
-
   };
 
   Game.prototype.handleRestartSuccess = function (response) {
+    this.okayToDisplayLeaderBoard = false;
     this.cancelKeys = false;
     this.clearAllIntervals();
     this.timer2 = window.setInterval(function () {
