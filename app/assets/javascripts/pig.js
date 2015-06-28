@@ -9,7 +9,7 @@
     this.velY = 0;
     this.speed = 7;
     this.top = 400;
-    this.left = 350;
+    this.left = 280;
     this.width = 90;
     this.height = 65;
     this.countIntervalsBeforeGoingDown = 0;
