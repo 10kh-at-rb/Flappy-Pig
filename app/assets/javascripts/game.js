@@ -62,11 +62,18 @@
     }
     this.landingTop += this.landingVelY;
 
+
     if (this.landingVelY > 0) {
-      ctx.drawImage(this.pigFlyImage, this.pig.left - 15, this.landingTop, this.pig.width + 30, this.pig.height + 30);
+      ctx.drawImage(this.pigSpriteImage, 151, 0, 150, 150, this.pig.left - 15, this.landingTop, 150, 150);
     } else if (this.landingVelY < 0) {
-      ctx.drawImage(this.pigFlyDownImage, this.pig.left - 15, this.landingTop, this.pig.width + 30, this.pig.height + 30);
+      ctx.drawImage(this.pigSpriteImage, 0, 0, 150, 150, this.pig.left - 15, this.landingTop, 150, 150);
     }
+
+    // if (this.landingVelY > 0) {
+    //   ctx.drawImage(this.pigFlyImage, this.pig.left - 15, this.landingTop, this.pig.width + 30, this.pig.height + 30);
+    // } else if (this.landingVelY < 0) {
+    //   ctx.drawImage(this.pigFlyDownImage, this.pig.left - 15, this.landingTop, this.pig.width + 30, this.pig.height + 30);
+    // }
   }
 
   Game.prototype.images = function () {
@@ -106,6 +113,9 @@
 
     this.gameoverImage = new Image();
     this.gameoverImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_gameover.gif";
+
+    this.pigSpriteImage = new Image();
+    this.pigSpriteImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/new_pig_variations2.gif";
   };
 
   Game.prototype.newGame = function () {
