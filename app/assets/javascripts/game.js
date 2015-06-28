@@ -240,8 +240,8 @@
 
   Game.prototype.handleRestartSuccess = function (response) {
     this.okayToDisplayLeaderBoard = false;
-    this.cancelKeys = false;
     this.clearAllIntervals();
+    this.cancelKeys = false;
     this.timer2 = window.setInterval(function () {
       this.onLand.call(this);
     }.bind(this));
