@@ -131,6 +131,6 @@
     // height of sprite
 
     ctx.drawImage(this.game.topPipeImage, this.game.obstacles[0].fromLeft, this.game.obstacles[0].height - this.game.yDim, 87*1.6, this.game.yDim);
-    ctx.drawImage(this.game.bottomPipeImage, 0, 0, 174, this.game.obstacles[1].height, this.game.obstacles[1].fromLeft, this.game.obstacles[1].fromTop, 87*1.6, this.game.obstacles[1].height);
+    ctx.drawImage(this.game.bottomPipeImage, 0, 0, 175, this.game.obstacles[1].height, this.game.obstacles[1].fromLeft, this.game.obstacles[1].fromTop, 87*1.6, this.game.obstacles[1].height);
   };
 })();

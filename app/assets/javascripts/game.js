@@ -108,9 +108,6 @@
     this.leaderBoardImage = new Image();
     this.leaderBoardImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/leaderboard.gif";
 
-    this.gameoverImage = new Image();
-    this.gameoverImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_gameover.gif";
-
     this.pigSpriteImage = new Image();
     this.pigSpriteImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/new_pig_variations2.gif";
   };
@@ -147,10 +144,10 @@
 
     this.barLeft -= 4;
     // console.log(this.barLeft);
-    if (this.barLeft < -(2250 - this.xDim)) {
+    if (this.barLeft < -(1512 - this.xDim)) {
       this.barLeft = 0;
     }
-    ctx.drawImage(this.bgImage_bar, this.barLeft, 900, 2250, 28.5);
+    ctx.drawImage(this.bgImage_bar, this.barLeft, 904, 1512, 15);
 
     this.obstacles.forEach(function (obstacle) {
       obstacle.render(ctx);
@@ -162,7 +159,7 @@
     ctx.fillStyle = "white";
         ctx.textAlign = 'center';
     ctx.lineWidth = 4;
-    ctx.strokeStyle = "black";
+    ctx.strokeStyle = "#543000";
     ctx.fillText(this.score, this.xDim/2, 150);
     ctx.strokeText(this.score, this.xDim/2, 150);
   };
@@ -290,7 +287,7 @@
   };
 
   Game.prototype.generateNewObstacles = function () {
-    var heightOfGameSpace = this.yDim - 130;
+    var heightOfGameSpace = this.yDim - 129;
     var usuablePipeSpace = heightOfGameSpace - 275;
     var maxHeight = usuablePipeSpace * 0.7;
     var minHeight = usuablePipeSpace * 0.3;
