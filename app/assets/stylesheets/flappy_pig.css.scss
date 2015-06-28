@@ -37,6 +37,10 @@
 
 }
 
+body {
+  background: #222;
+}
+
 .preload {
   position: absolute;
   left: 0;
@@ -54,17 +58,17 @@
 .container {
   width: 480px;
   height: 640px;
-  position: relative;
-  margin: auto auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -320px;
+  margin-left: -240px;
 }
 
 .flappy-view {
-
-  border: 3px solid #543646;
   display: block;
   width: 100%;
   position: relative;
-
 }
 
 .row {
@@ -81,4 +85,16 @@
 }
 .obstacle {
   background: green;
+}
+
+
+footer {
+  font: 9px sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #555;
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  width: 100%;
 }
