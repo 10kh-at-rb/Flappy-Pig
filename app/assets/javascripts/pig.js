@@ -95,8 +95,8 @@
 
   var Obstacle = FlappyPig.Obstacle = function (game, top, height) {
     this.game = game;
-    this.speed = 4;
-    this.velX = 0;
+    // this.speed = 4;
+    // this.velX = 0;
     this.fromLeft = game.xDim;
     this.fromTop = top;
     this.width = 87;
@@ -104,10 +104,11 @@
   };
 
   Obstacle.prototype.move = function () {
-    if (this.velX > -this.speed) {
-      this.velX--;
-    }
-    this.fromLeft += this.velX;
+    this.fromLeft -= 4;
+    // if (this.velX > -this.speed) {
+    //   this.velX--;
+    // }
+    // this.fromLeft += this.velX;
   };
 
   Obstacle.prototype.render = function (ctx) {
