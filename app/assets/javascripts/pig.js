@@ -49,6 +49,12 @@
       this.height
     );
 
+    if (this.game.gameOver) {
+      console.log('gameover');
+      ctx.drawImage(this.game.pigSpriteImage, 750, 0, 150, 150, this.left - 15, this.top - 15, 150, 150);
+        return;
+    }
+
     if (this.velY === this.speed) {
       this.countIntervalsBeforeGoingDown ++;
     }
