@@ -25,9 +25,9 @@
 
     this.top += this.velY;
 
-    if (this.collide() || this.isHitGround()) {
-      this.game.gameOver = true;
-    }
+    // if (this.collide() || this.isHitGround()) {
+    //   this.game.gameOver = true;
+    // }
   };
 
   Pig.prototype.up = function () {

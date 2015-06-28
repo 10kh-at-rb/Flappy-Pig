@@ -265,8 +265,8 @@
   Game.prototype.generateNewObstacles = function () {
     var heightOfGameSpace = this.yDim - 129;
     var usuablePipeSpace = heightOfGameSpace - 275;
-    var maxHeight = usuablePipeSpace * 0.7;
-    var minHeight = usuablePipeSpace * 0.3;
+    var maxHeight = usuablePipeSpace * 0.9;
+    var minHeight = usuablePipeSpace * 0.1;
 
     var bottomPipeHeight = Math.floor(Math.random()* (maxHeight - minHeight)) + minHeight;
     this.obstacleBottom = new FlappyPig.Obstacle(this, heightOfGameSpace - bottomPipeHeight, bottomPipeHeight);
