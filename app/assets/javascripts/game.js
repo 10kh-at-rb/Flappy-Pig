@@ -15,9 +15,6 @@
     this.landingTop = 370;
     this.cancelKeys = false;
 
-
-    this.barVelX = 0;
-    this.barSpeed = 4;
     this.barLeft = 0;
 
     // this.okayToDisplayLeaderBoard = false;
@@ -149,7 +146,13 @@
     //   this.barVelX--;
     // }
     // this.barLeft += this.barVelX;
-    ctx.drawImage(this.bgImage_bar, this.obstacles[0].fromLeft - this.xDim, 900, 2250, 28.5);
+
+    this.barLeft -= 4;
+    console.log(this.barLeft);
+    if (this.barLeft < -(2250 - this.xDim)) {
+      this.barLeft = 0;
+    }
+    ctx.drawImage(this.bgImage_bar, this.barLeft, 900, 2250, 28.5);
 
     this.obstacles.forEach(function (obstacle) {
       obstacle.render(ctx);
