@@ -120,7 +120,17 @@
       this.height
     );
 
+    // ctx.drawImage(this.game.pigSpriteImage, 601, 0, 150, 150, this.left - 30, this.top - 35, 150, 150);
+    // left position of sprite,
+    // top post of sprite
+    // actual width of sprite
+    // height of sprite
+    // left pos on canvas
+    // top pos on canvas
+    // width of sprite (will compress the sprite) (this is teh width you want your sprite to stretch/compress to)
+    // height of sprite
+
     ctx.drawImage(this.game.topPipeImage, this.game.obstacles[0].fromLeft, this.game.obstacles[0].height - this.game.yDim, 87*1.6, this.game.yDim);
-    ctx.drawImage(this.game.bottomPipeImage, this.game.obstacles[1].fromLeft, this.game.obstacles[1].fromTop, 87*1.6, this.game.yDim);
+    ctx.drawImage(this.game.bottomPipeImage, 0, 0, 174, this.game.obstacles[1].height, this.game.obstacles[1].fromLeft, this.game.obstacles[1].fromTop, 87*1.6, this.game.obstacles[1].height);
   };
 })();

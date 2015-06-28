@@ -9,14 +9,12 @@
     this.yDim = this.canvas.height;
     this.images();
     this.newGame();
-    this.landingInterval = 0;
     this.landingVelY = 0;
     this.landingSpeed = 0.7;
     this.landingTop = 370;
     this.cancelKeys = false;
 
     this.barLeft = 0;
-
     // this.okayToDisplayLeaderBoard = false;
 
     this.timer1 = window.setInterval(function () {
@@ -49,7 +47,6 @@
 
   Game.prototype.onLand = function () {
     $('.your-score, .restart-game, .leaderboard-container, form.leaderboard').hide();
-    this.landingInterval += 1;
     var ctx = this.canvas.getContext("2d");
     ctx.clearRect(0, 0, this.xDim, this.yDim);
     ctx.drawImage(this.landingImage, 0, 0, this.xDim, this.yDim);
@@ -129,6 +126,7 @@
 
   Game.prototype.render = function (ctx) {
     if (this.gameOver) {
+      // console.log(this.obstacleTop.fromLeft)
       this.clearAllIntervals();
       this.dead(ctx);
       this.fired = false;
@@ -148,7 +146,7 @@
     // this.barLeft += this.barVelX;
 
     this.barLeft -= 4;
-    console.log(this.barLeft);
+    // console.log(this.barLeft);
     if (this.barLeft < -(2250 - this.xDim)) {
       this.barLeft = 0;
     }
@@ -292,9 +290,15 @@
   };
 
   Game.prototype.generateNewObstacles = function () {
-    var bottomPipeHeight =  Math.floor(Math.random()*(0.7*this.yDim - 0.125*this.yDim)) + 0.125*this.yDim; // generates random height
-    this.obstacleBottom = new FlappyPig.Obstacle(this, this.yDim - bottomPipeHeight, bottomPipeHeight);
-    var topPipeHeight = this.yDim - bottomPipeHeight - 250;
+    var heightOfGameSpace = this.yDim - 130;
+    var usuablePipeSpace = heightOfGameSpace - 275;
+    var maxHeight = usuablePipeSpace * 0.7;
+    var minHeight = usuablePipeSpace * 0.3;
+
+    var bottomPipeHeight = Math.floor(Math.random()* (maxHeight - minHeight)) + minHeight;
+    // var bottomPipeHeight =  Math.floor(Math.random()*(0.7*heightOfGameSpace - 0.125*heightOfGameSpace)) + 0.125*heightOfGameSpace; // generates random height
+    this.obstacleBottom = new FlappyPig.Obstacle(this, heightOfGameSpace - bottomPipeHeight, bottomPipeHeight);
+    var topPipeHeight = heightOfGameSpace - bottomPipeHeight - 275;
     this.obstacleTop = new FlappyPig.Obstacle(this, 0, topPipeHeight);
 
     return [this.obstacleTop, this.obstacleBottom];
@@ -306,8 +310,11 @@
     this.clearAllIntervals();
     this.timer3 = window.setInterval(function () {
       this.interval += 1;
+      console.log(this.interval);
       this.movePig();
-      this.moveObstacles();
+      if (this.interval > 200) {
+        this.moveObstacles();
+      }
       this.render(ctx);
     }.bind(this), 10);
   };
