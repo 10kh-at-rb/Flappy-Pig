@@ -72,7 +72,7 @@
 
 
   Pig.prototype.collide = function () {
-    if ( // the pig is within the pipe gap
+    if ( // the pig is within the pipe (from top to bottom)
         // if the right side of the pig is greater than the obstacle's left
         ((this.left + this.width) >= this.game.obstacles[0].fromLeft) &&
         // the left side of the pig is less than the right side of the obstacle

@@ -20,6 +20,22 @@
       this.onLand.call(this);
     }.bind(this));
 
+    $(window).click(function (e) {
+      if (!this.cancelKeys) {
+        if (this.fired) {
+          this.pig.up();
+        } else {
+          this.clearAllIntervals();
+
+          this.gameOver = false;
+          this.newGame();
+          this.start();
+          this.fired = true;
+        }
+      }
+    }.bind(this));
+
+
     $(window).keydown(function (e) {
       if (!this.cancelKeys && e.keyCode === 32) {
         if (this.fired) {
