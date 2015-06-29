@@ -282,7 +282,6 @@
     this.clearAllIntervals();
     this.timer3 = window.setInterval(function () {
       this.interval += 1;
-      console.log(this.interval);
       this.movePig();
       if (this.interval > 200) {
         this.moveObstacles();
