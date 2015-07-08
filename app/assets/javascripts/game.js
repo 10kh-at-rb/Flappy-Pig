@@ -24,7 +24,7 @@
 
     this.timer1 = window.setInterval(function () {
       this.onLand.call(this);
-    }.bind(this));
+    }.bind(this), 10);
 
     $(window).keydown(function (e) {
       if (!this.cancelKeys && e.keyCode === 32) {
@@ -228,10 +228,10 @@
   Game.prototype.handleRestartSuccess = function (response) {
     this.okayToDisplayLeaderBoard = false;
     this.clearAllIntervals();
-    this.cancelKeys = false;
     this.timer2 = window.setInterval(function () {
       this.onLand.call(this);
-    }.bind(this));
+    }.bind(this), 10);
+
 
     $('#leaderboard-name').val("");
     $('.leaderboard-name, .leaderboard-score').html("");
@@ -249,6 +249,11 @@
       $('.leaderboard-name').append($('<li>').html(user.name));
       $('.leaderboard-score').append($('<li>').html(score));
     });
+
+    setTimeout(function () {
+      this.cancelKeys = false;
+    }.bind(this), 500);
+
   };
 
   Game.prototype.movePig = function () {
