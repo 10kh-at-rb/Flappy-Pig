@@ -112,7 +112,6 @@
     this.pig = new FlappyPig.Pig(this);
     this.score = 0;
     this.gameOver = false;
-    // this.fired = false;
     this.interval = 0;
     this.obstacles = this.generateNewObstacles();
   };
