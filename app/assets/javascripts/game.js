@@ -247,7 +247,9 @@
       $('.leaderboard-score').append($('<li>').html(score));
     });
 
-    this.cancelKeys = false;
+    setTimeout(function () {
+      this.cancelKeys = false;
+    }.bind(this), 1000)
   };
 
   Game.prototype.movePig = function () {
