@@ -103,7 +103,7 @@
   };
 
   Obstacle.prototype.move = function () {
-    this.fromLeft -= 4;
+    this.fromLeft -= 5;
   };
 
   Obstacle.prototype.render = function (ctx) {

@@ -137,7 +137,7 @@
     ctx.clearRect(0, 0, this.xDim, this.yDim);
     ctx.drawImage(this.bgImage_1, 0, 0, this.xDim, this.yDim);
 
-    this.barLeft -= 4;
+    this.barLeft -= 5;
     if (this.barLeft < -(1512 - this.xDim)) {
       this.barLeft = 0;
     }
