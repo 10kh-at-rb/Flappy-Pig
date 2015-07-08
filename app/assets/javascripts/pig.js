@@ -33,6 +33,8 @@
   Pig.prototype.up = function () {
     this.velY = -17;
     this.countIntervalsBeforeGoingDown = 0;
+    this.game.flapSound.play();
+
   }
 
   Pig.prototype.render = function (ctx) {
@@ -50,6 +52,7 @@
       } else {
         this.game.okayToDisplayLeaderBoard = true;
         ctx.drawImage(this.game.pigSpriteImage, 750, 0, 150, 150, this.left - 30, this.game.yDim - this.game.yDim * 0.225, 150, 150);
+
       }
       return;
     }

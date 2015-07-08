@@ -14,6 +14,12 @@
     this.landingTop = 370;
     this.cancelKeys = false;
 
+
+    this.badingSound = new Audio('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/sounds/sfx_point.mp3');
+    this.flapSound = new Audio('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/sounds/sfx_wing.mp3');
+    this.smackSound = new Audio('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/sounds/sfx_hit.mp3');
+    this.dieSound = new Audio('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/sounds/sfx_die.mp3');
+    this.swooshSound = new Audio('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/sounds/sfx_swooshing.mp3');
     this.barLeft = 0;
 
     this.timer1 = window.setInterval(function () {
@@ -115,6 +121,13 @@
 
   Game.prototype.render = function (ctx) {
     if (this.gameOver) {
+      this.smackSound.play();
+      setTimeout(function () {
+        this.dieSound.play();
+      }.bind(this), 300)
+      setTimeout(function () {
+        this.swooshSound.play();
+      }.bind(this), 600)
       this.clearAllIntervals();
       this.dead(ctx);
       this.fired = false;
@@ -257,6 +270,7 @@
     if (this.pig.left > this.obstacleTop.fromLeft + this.obstacleTop.width) {
       if (!this.gavePoint) {
         this.score += 1;
+        this.badingSound.play();
         this.gavePoint = true;
       }
     }
