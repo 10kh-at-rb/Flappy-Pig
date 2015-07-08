@@ -32,11 +32,9 @@
           this.pig.up();
         } else {
           this.clearAllIntervals();
-
-          this.gameOver = false;
+          this.fired = true;
           this.newGame();
           this.start();
-          this.fired = true;
         }
       }
     }.bind(this));
@@ -114,7 +112,7 @@
     this.pig = new FlappyPig.Pig(this);
     this.score = 0;
     this.gameOver = false;
-    this.fired = false;
+    // this.fired = false;
     this.interval = 0;
     this.obstacles = this.generateNewObstacles();
   };
@@ -250,10 +248,7 @@
       $('.leaderboard-score').append($('<li>').html(score));
     });
 
-    setTimeout(function () {
-      this.cancelKeys = false;
-    }.bind(this), 500);
-
+    this.cancelKeys = false;
   };
 
   Game.prototype.movePig = function () {
