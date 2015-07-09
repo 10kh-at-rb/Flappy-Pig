@@ -10,17 +10,16 @@
   -webkit-font-smoothing: none;
 }
 .leaderboard-container, .your-score {
-  font: 13px 'Silk';
+  font: 8px 'Silk';
   color: #fff;
   text-shadow: 0px 1px #d4a559;
-  line-height: 15.1px;
   -webkit-font-smoothing: none;
 }
 
 .your-score {
   position: absolute;
-  top: 381px;
-  left: 227px;
+  top: 256px;
+  left: 152px;
 }
 
 .add-your-score {
@@ -38,13 +37,13 @@
 }
 
 .restart-game {
-  width: 119px;
-  height: 39px;
+  width: 60px;
+  height: 20px;
   position: absolute;
-  top: 445px;
-  left: 184px;
+  top: 294px;
+  left: 131px;
   background-image: url("https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/button_restart_raised.gif");
-  background-size: 119px;
+  background-size: 60px;
   &:hover {
     background-image: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/button_restart_pressed.gif');
   }
@@ -52,30 +51,37 @@
 
 .leaderboard-container {
   position: absolute;
-  top: 150px;
-  left: 156px;
+  top: 102px;
+  left: 105px;
   ul.leaderboard-name {
     list-style-type: none;
     float: left;
     padding: 0;
-    width: 110px;
+    width: 103px;
     overflow: hidden;
     margin-bottom: -10px;
+
+    li {
+      margin-bottom: 3px;
+    }
   }
   ul.leaderboard-score {
     list-style-type: none;
     float: left;
     padding: 0;
-    margin-left: 12px;
+    margin-left: -37px;
     width: 45px;
     text-align: right;
     margin-bottom: -10px;
+    li {
+      margin-bottom: 3px;
+    }
   }
 }
 
 form.leaderboard {
   input {
-    font: 13px 'Silk';
+    font: 8px 'Silk';
     color: #FFF;
     text-shadow: 0px 1px #d4a559;
     line-height: 15.1px;
@@ -88,9 +94,9 @@ form.leaderboard {
     }
     &#leaderboard-name {
       position: absolute;
-      top: 314px;
-      left: 142px;
-      width: 187px;
+      top: 207px;
+      left: 94px;
+      width: 122px;
       padding: 0px 5px;
       background-color: transparent;
 
@@ -102,14 +108,14 @@ form.leaderboard {
 
     &.submit-button {
       display: none;
-      width: 35px;
-      height: 35px;
+      width: 18px;
+      height: 18px;
       position: absolute;
-      top: 394px;
-      left: 290px;
+      top: 264px;
+      left: 200px;
       background-color: transparent;
-      background-image: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/add_button_raised.gif');
-      background-size: 35px;
+      background-image: url("https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/add_button_raised.gif");
+      background-size: 18px;
       &:hover {
         background-image: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/add_button_pressed.gif');
       }

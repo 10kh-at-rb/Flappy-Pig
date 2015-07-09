@@ -15,3 +15,8 @@
 //= require jquery_ujs
 //= require pig.js
 //= require game
+
+
+$(window).load(function () {
+  $('body').height($(window).height());
+})

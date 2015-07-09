@@ -39,8 +39,25 @@
 
 body {
   background: #222;
+  background-image: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_image.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+
 }
 
+.iphone-image {
+  background-image: url('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/iphone.gif');
+  background-size: 100%;
+  height: 624px;
+  width: 382px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -313px;
+  margin-left: -191px;
+
+}
 .preload {
   position: absolute;
   left: 0;
@@ -56,13 +73,13 @@ body {
   font: 12px 'Silk';
 }
 .container {
-  width: 480px;
-  height: 640px;
+  width: 320px;
+  height: 426px;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -320px;
-  margin-left: -240px;
+  margin-top: -219px;
+  margin-left: -152px;
 }
 
 .flappy-view {
