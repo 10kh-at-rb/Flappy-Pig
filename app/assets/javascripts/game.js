@@ -15,11 +15,11 @@
     this.cancelKeys = false;
 
 
-    this.badingSound = new Audio('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/sounds/sfx_point.mp3');
-    this.flapSound = new Audio('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/sounds/sfx_wing.mp3');
-    this.smackSound = new Audio('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/sounds/sfx_hit.mp3');
-    this.dieSound = new Audio('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/sounds/sfx_die.mp3');
-    this.swooshSound = new Audio('https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/sounds/sfx_swooshing.mp3');
+    this.badingSound = new Audio('http://images.karenling.net/aa/flappy_pig/sounds/sfx_point.mp3');
+    this.flapSound = new Audio('http://images.karenling.net/aa/flappy_pig/sounds/sfx_wing.mp3');
+    this.smackSound = new Audio('http://images.karenling.net/aa/flappy_pig/sounds/sfx_hit.mp3');
+    this.dieSound = new Audio('http://images.karenling.net/aa/flappy_pig/sounds/sfx_die.mp3');
+    this.swooshSound = new Audio('http://images.karenling.net/aa/flappy_pig/sounds/sfx_swooshing.mp3');
     this.barLeft = 0;
 
     this.timer1 = window.setInterval(function () {
@@ -72,40 +72,40 @@
   Game.prototype.images = function () {
 
     this.landingImage = new Image();
-    this.landingImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/landing.gif";
+    this.landingImage.src = "http://images.karenling.net/aa/flappy_pig/landing.gif";
 
     this.bgImage_1 = new Image();
-    this.bgImage_1.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_1.gif";
+    this.bgImage_1.src = "http://images.karenling.net/aa/flappy_pig/bg_1.gif";
 
     this.bgImage_bar = new Image();
-    this.bgImage_bar.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/bg_bar.gif";
+    this.bgImage_bar.src = "http://images.karenling.net/aa/flappy_pig/bg_bar.gif";
 
     this.pigNormImage = new Image();
-    this.pigNormImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pig.png";
+    this.pigNormImage.src = "http://images.karenling.net/aa/flappy_pig/pig.png";
 
     this.pigFlyImage = new Image();
-    this.pigFlyImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pig_fly.png";
+    this.pigFlyImage.src = "http://images.karenling.net/aa/flappy_pig/pig_fly.png";
 
     this.pigFlyDownImage = new Image();
-    this.pigFlyDownImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pig_fly_down.png";
+    this.pigFlyDownImage.src = "http://images.karenling.net/aa/flappy_pig/pig_fly_down.png";
 
     this.pigFallImage = new Image();
-    this.pigFallImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pig_fall.png";
+    this.pigFallImage.src = "http://images.karenling.net/aa/flappy_pig/pig_fall.png";
 
     this.topPipeImage = new Image();
-    this.topPipeImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pipe_top.png";
+    this.topPipeImage.src = "http://images.karenling.net/aa/flappy_pig/pipe_top.png";
 
     this.bottomPipeImage = new Image();
-    this.bottomPipeImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/pipe_bottom.png";
+    this.bottomPipeImage.src = "http://images.karenling.net/aa/flappy_pig/pipe_bottom.png";
 
     this.scoreBoardImage = new Image();
-    this.scoreBoardImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/score_board.png";
+    this.scoreBoardImage.src = "http://images.karenling.net/aa/flappy_pig/score_board.png";
 
     this.leaderBoardImage = new Image();
-    this.leaderBoardImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/leaderboard.gif";
+    this.leaderBoardImage.src = "http://images.karenling.net/aa/flappy_pig/leaderboard.gif";
 
     this.pigSpriteImage = new Image();
-    this.pigSpriteImage.src = "https://dl.dropboxusercontent.com/u/2330299/capstone/flappy_pig/new_pig_variations2.gif";
+    this.pigSpriteImage.src = "http://images.karenling.net/aa/flappy_pig/new_pig_variations2.gif";
   };
 
   Game.prototype.newGame = function () {
